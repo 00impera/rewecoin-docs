@@ -1,0 +1,95 @@
+---
+---
+@import "jekyll-theme-cayman";
+
+$section-headings-color: #B7D34B;
+$body-text-color: #C7D0BC;
+$body-link-color: #3FBE79;
+$blockquote-color: #8B9A7E;
+$code-bg-color: #182207;
+$table-border-color: rgba(183,211,75,0.16);
+$hr-border-color: rgba(183,211,75,0.16);
+$header-heading-color: #E7EFD8;
+$header-bg-color: #0B0F03;
+$header-bg-color-secondary: #008846;
+
+body {
+  background: #0B0F03;
+  color: #C7D0BC;
+}
+
+.main-content {
+  background: #0B0F03;
+  color: #C7D0BC;
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  color: #E7EFD8;
+}
+
+.main-content a {
+  color: #3FBE79;
+}
+.main-content a:hover {
+  color: #B7D34B;
+}
+
+.main-content code {
+  background: #182207;
+  color: #CFE07A;
+}
+.main-content pre {
+  background: #182207;
+  border: 1px solid rgba(183,211,75,0.16);
+}
+
+.main-content table th {
+  background: #182207;
+  color: #E7EFD8;
+}
+.main-content table td,
+.main-content table th {
+  border-color: rgba(183,211,75,0.16);
+  color: #C7D0BC;
+}
+.main-content table tr {
+  background: #0F1505;
+}
+.main-content table tr:nth-child(2n) {
+  background: #131A03;
+}
+
+.main-content blockquote {
+  color: #8B9A7E;
+  border-left: 4px solid rgba(183,211,75,0.3);
+}
+
+.main-content hr {
+  border-top-color: rgba(183,211,75,0.16);
+}
+
+.btn {
+  background: linear-gradient(135deg, #008846, #3FAE70);
+  color: #06170D;
+  border-color: rgba(183,211,75,0.3);
+}
+.btn:hover {
+  background: linear-gradient(135deg, #3FAE70, #008846);
+  border-color: #B7D34B;
+}
+
+.page-header {
+  background: linear-gradient(120deg, #0B0F03, #008846);
+}
+
+.site-footer {
+  color: #8B9A7E;
+}
+.site-footer a {
+  color: #3FBE79;
+}
