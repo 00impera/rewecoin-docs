@@ -93,3 +93,28 @@ body {
 .site-footer a {
   color: #3FBE79;
 }
+
+/* ---------- Monospace / terminal-style font ---------- */
+body,
+.main-content,
+.page-header {
+  font-family: 'Cascadia Code', 'Consolas', 'SF Mono', 'Fira Code', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.page-header h1.project-name {
+  font-family: 'Cascadia Code', 'Consolas', 'SF Mono', 'Fira Code', 'JetBrains Mono', ui-monospace, monospace;
+  letter-spacing: -0.01em;
+}
+
+.page-header p.project-tagline {
+  font-family: 'Cascadia Code', 'Consolas', 'SF Mono', 'Fira Code', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.main-content p,
+.main-content li {
+  font-size: 0.95rem;
+}
