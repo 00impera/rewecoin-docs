@@ -11,7 +11,7 @@ Official public documentation for **ReweCoin**, a Proof-of-Work blockchain built
 
 - Explorer: https://explorer.rewecoin.com
 - Wallet: https://wallet.rewecoin.com
-- Website: https://rewecoin.com *(coming soon)*
+- Website: https://rewecoin.com 
 
 ## Status
 
