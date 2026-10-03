@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ReweCoin (RWC) — Whitepaper</title><meta name="theme-color" content="#000000">
+<style>
+:root{--bg:#000;--fg:#ccc;--g:#3ddc84;--dim:#7a7a7a;--y:#f5e050;--bd:#2a2a2a}
+*{box-sizing:border-box}html{background:#000}
+body{margin:0 auto;max-width:880px;padding:20px 16px 60px;background:#000;color:var(--fg);font:15px/1.6 Consolas,"Cascadia Mono","Courier New",monospace}
+a{color:var(--g);text-decoration:underline}a:hover{background:var(--g);color:#000}
+h1,h2,h3{color:#fff;font-weight:700;margin:1.6em 0 .4em}h1{font-size:1.5em}h2{font-size:1.2em}h2:before{content:"PS> ";color:var(--g)}h3{font-size:1em;color:var(--y)}
+code{color:var(--y)}.dim{color:var(--dim)}.ok{color:var(--g)}.wip{color:var(--y)}
+table{border-collapse:collapse;display:block;overflow-x:auto}td,th{border:1px solid var(--bd);padding:4px 10px;text-align:left}th{color:#fff}
+ul{padding-left:1.2em}blockquote{border-left:3px solid var(--g);margin:1em 0;padding-left:12px;color:var(--dim)}
+.box{border:1px solid var(--bd);padding:10px 14px;margin:10px 0}
+footer{margin-top:50px;border-top:1px solid var(--bd);padding-top:14px}footer a{margin-right:16px}
+</style></head><body>
+<p class="dim">PS C:\rewecoin&gt; <span class="ok">type</span> whitepaper.md</p>
+<h1>ReweCoin (RWC) — Whitepaper</h1>
+<p class="dim">Version 0.2 — Draft, October 2026</p>
+<blockquote>Parameters are verified from the ReweCoin mainnet node and its consensus source. Sections marked <b>TBD</b> are open for the team to finalize; no invented figures.</blockquote>
+
+<h2>1. What is ReweCoin?</h2>
+<p>ReweCoin (<b>RWC</b>) is an independent Proof-of-Work blockchain built on the Zcash codebase (zcashd 6.0.0). Mainnet launched on <b>September 21, 2026</b> with no premine and no founders' allocation: every RWC was earned by public mining from block zero.</p>
+<p>It inherits Zcash's transaction model (transparent and shielded pools, UTXO ledger) and Equihash consensus, as a fully separate chain with its own genesis, emission schedule and parameters.</p>
+
+<h2>2. Why does it exist?</h2>
+<p><b>TBD</b> — the project's motivation in the founder's own words: what gap it fills and how it differs from using Zcash or another chain.</p>
+
+<h2>3. How does it work?</h2>
+<h3>3.1 Consensus</h3>
+<p>Proof-of-Work with <b>Equihash 200,9</b>, memory-hard and designed to keep mining accessible.</p>
+<ul><li>Target block time: <code>75 s</code></li><li>Difficulty adjustment: dynamic, per block (inherited from zcashd)</li></ul>
+<h3>3.2 Transaction model</h3>
+<p>Transparent and shielded pools (Sapling/Orchard present in the protocol; usage so far is mostly transparent). Mainnet addresses start with <code>C7</code>.</p>
+<h3>3.3 Network infrastructure</h3>
+<table><tr><th>Component</th><th>Status</th><th>Link</th></tr>
+<tr><td>Mainnet node</td><td class="ok">Live</td><td>—</td></tr>
+<tr><td>Testnet</td><td class="ok">Live</td><td><a href="https://testnet.rewecoin.com">testnet.rewecoin.com</a></td></tr>
+<tr><td>Block explorer</td><td class="ok">Live</td><td><a href="https://explorer.rewecoin.com">explorer.rewecoin.com</a></td></tr>
+<tr><td>Web wallet</td><td class="ok">Live</td><td><a href="https://wallet.rewecoin.com">wallet.rewecoin.com</a></td></tr>
+<tr><td>Faucet</td><td class="ok">Live</td><td><a href="https://wallet.rewecoin.com/receive.html">via wallet</a></td></tr>
+<tr><td>Solo mining</td><td class="ok">Live</td><td>Equihash 200,9 miners</td></tr>
+<tr><td>Mining pool (stratum)</td><td class="wip">Testing</td><td>Internal testnet tests; not public yet</td></tr></table>
+
+<h3>3.4 Mining pool (in testing)</h3>
+<ul><li>Stratum server for Equihash 200,9, including NU5 block templates.</li>
+<li>Local Equihash verification of every solution before it reaches the node.</li>
+<li>Payout address required: miners connect as <code>-u ADDRESS.worker</code>; the address is validated by the node.</li>
+<li>Found blocks are journaled; payouts wait for coinbase maturity (101 blocks), skip orphans, and are idempotent.</li>
+<li>Not yet implemented: variable difficulty (vardiff), PPLNS share accounting, TLS.</li></ul>
+
+<h2>4. What utility does it have?</h2>
+<p><b>TBD</b> — today RWC is base-layer infrastructure (send, receive, mine, explore). Directions under consideration, to be listed only with a concrete plan:</p>
+<ul><li>Payment rail for goods/services</li><li>Membership / access-gating token</li><li>Marketplace settlement currency</li><li>Staking or reward mechanisms (needs protocol-level design; chain is pure PoW)</li></ul>
+
+<h2>5. Supply and emission</h2>
+<p>Detail: <a href="https://00impera.github.io/rewecoin-docs/tokenomics/supply-and-emission.html">tokenomics/supply-and-emission</a></p>
+<ul><li>Initial block reward: <code>50 RWC</code></li><li>Halving interval: <code>840,960</code> blocks (~2 years)</li><li>Premine: none (verified on-chain)</li><li>Asymptotic supply: ~84,093,434 RWC</li><li>Technical overflow cap: 100,000,000 RWC (not the target)</li></ul>
+
+<h2>6. Roadmap</h2>
+<ul>
+<li class="ok">[x] Mainnet + testnet live</li><li class="ok">[x] Block explorer</li><li class="ok">[x] Web wallet</li><li class="ok">[x] Faucet</li>
+<li class="ok">[x] Public whitepaper (this document)</li><li class="ok">[x] Landing page (<a href="https://rewecoin.com/">rewecoin.com</a>)</li><li class="ok">[x] Community channels (Telegram, Discord, X)</li>
+<li class="wip">[~] Mining pool: Equihash verification, address validation and payouts built; testnet runs ongoing</li>
+<li>[ ] Pool on mainnet (vardiff, PPLNS, TLS, firewall)</li>
+<li>[ ] End-to-end public test: faucet → wallet A → send → wallet B → explorer</li>
+<li>[ ] Defined utility layer (Section 4)</li>
+<li>[ ] Exchange listing / swap (may carry money-transmission / KYC-AML implications; get legal review first)</li>
+<li>[ ] Mobile app or PWA</li></ul>
+
+<h2>7. Risks and disclaimers</h2>
+<ul><li>Early-stage network: difficulty is at its floor and peer count is minimal. Block timing and security assumptions will shift as the network grows.</li>
+<li>Emission projections assume the target block time; real timelines vary with hashrate.</li>
+<li>Not financial advice. RWC should not be treated as an investment absent a documented utility case.</li></ul>
+
+<footer><p class="dim">PS C:\rewecoin&gt; <span class="ok">Get-Links</span></p>
+<a href="https://x.com/ionelxxx1">X</a><a href="https://discord.gg/pVDyKAqeF">Discord</a><a href="https://t.me/ReweCoin_bot">Telegram</a><a href="https://github.com/00impera">GitHub</a>
+<p class="dim">© 2026 ReweCoin · <a href="https://rewecoin.com/">rewecoin.com</a></p></footer>
+</body></html>
