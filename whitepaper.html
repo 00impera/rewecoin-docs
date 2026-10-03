@@ -1,17 +1,28 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ReweCoin (RWC) — Whitepaper</title><meta name="theme-color" content="#ff8c00">
+<title>ReweCoin (RWC) — Whitepaper</title><meta name="theme-color" content="#000000">
 <style>
-:root{--bg:#ff8c00;--fg:#08501a;--g:#002b0d;--dim:#0d4a1a;--y:#003a10;--bd:#7a4200}
-*{box-sizing:border-box}html{background:#ff8c00}
-body{margin:0 auto;max-width:880px;padding:20px 16px 60px;background:#ff8c00;color:var(--fg);font:15px/1.6 Consolas,"Cascadia Mono","Courier New",monospace}
-a{color:var(--g);font-weight:700;text-decoration:underline}a:hover{background:#000;color:#ff8c00}
-h1,h2,h3{color:#003a10;font-weight:700;margin:1.6em 0 .4em}h1{font-size:1.5em}h2{font-size:1.2em}h2:before{content:"PS> ";color:var(--g)}h3{font-size:1em;color:var(--y)}
-code{background:#000;color:#3ddc84;border:1px solid #3ddc84;border-radius:4px;padding:1px 6px;font-size:.95em;white-space:nowrap}.box code{border:0;padding:0}.dim{color:var(--dim)}.ok{color:var(--g)}.wip{color:#7a1f00;font-weight:700}
-table{border-collapse:collapse;display:block;overflow-x:auto}td,th{border:1px solid var(--bd);padding:4px 10px;text-align:left}th{color:#3ddc84}
-ul{padding-left:1.2em}blockquote{border-left:3px solid var(--g);margin:1em 0;padding-left:12px;color:var(--dim)}
-.box{border:1px solid var(--bd);padding:10px 14px;margin:10px 0}
-footer{margin-top:50px;border-top:1px solid var(--bd);padding-top:14px}footer a{margin-right:16px}
-html{background:linear-gradient(#ff8c00,#d96800) fixed;min-height:100%}body{background:transparent!important}.box{background:#000;color:#3ddc84;border-color:#000}.box code{color:#3ddc84}th{background:#000;color:#3ddc84}td{border-color:#000}footer{background:#000;border:0;padding:14px 16px}footer a{color:#3ddc84}footer a:hover{background:#3ddc84;color:#000}footer .dim,footer p{color:#7fe3a8}footer .ok{color:#3ddc84}h1{background:#000;color:#3ddc84;padding:6px 12px;display:inline-block}</style></head><body>
+:root{--fg:#C8960C;--gold:#FFD700;--hi:#FFE566;--g:#39FF14;--glow:#00FF66;--in:#00CC00;--dedge:#004400}
+*{box-sizing:border-box}
+html{background-color:#000;background-image:radial-gradient(ellipse at 50% 25%,#050A0E 0%,#000 50%,#003300 100%);background-attachment:fixed;min-height:100%}
+body{margin:0 auto;max-width:880px;padding:20px 16px 60px;background:transparent;color:var(--fg);font:15px/1.6 Consolas,"Cascadia Mono","Courier New",monospace}
+a{color:var(--g);font-weight:700;text-decoration:underline;text-shadow:0 0 6px rgba(57,255,20,.45)}
+a:hover{background:var(--g);color:#000;text-shadow:none}
+h1,h2,h3{color:var(--gold);font-weight:700;margin:1.6em 0 .4em;text-shadow:0 0 8px rgba(255,215,0,.35)}
+h1{font-size:1.5em;display:inline-block;background:#000;border:1px solid var(--in);padding:6px 12px;color:var(--hi);box-shadow:0 0 14px rgba(0,255,102,.45)}
+h2{font-size:1.2em}h2:before{content:"PS> ";color:var(--g)}h3{font-size:1em;color:var(--hi)}
+b,strong{color:var(--gold)}
+code{background:#000;color:var(--g);border:1px solid var(--in);border-radius:4px;padding:1px 6px;font-size:.95em;white-space:nowrap;box-shadow:0 0 6px rgba(0,255,102,.3)}
+.dim{color:#8a6a0a}.ok{color:var(--g)}.wip{color:#ff6ec7;font-weight:700}
+table{border-collapse:collapse;display:block;overflow-x:auto}td,th{border:1px solid var(--dedge);padding:4px 10px;text-align:left}th{color:var(--g);background:#000}
+ul{padding-left:1.2em}blockquote{border-left:3px solid var(--g);margin:1em 0;padding-left:12px;color:#8a6a0a}
+.box{background:#000;color:var(--gold);border:1px solid var(--in);padding:10px 14px;margin:10px 0;box-shadow:0 0 14px rgba(0,255,102,.35)}.box code{border:0;padding:0;box-shadow:none}
+footer{margin-top:50px;background:#000;border:1px solid var(--dedge);padding:14px 16px;box-shadow:0 0 18px rgba(57,255,20,.25)}
+footer a{margin-right:16px}footer p{color:var(--fg)}
+.logo{position:relative;display:inline-block;overflow:hidden}.logo:hover{background:none}.logo img{display:block;max-width:220px;height:auto;filter:drop-shadow(0 0 6px rgba(57,255,20,.6))}
+.logo:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(162,89,255,.55) 42%,rgba(0,234,255,.55) 50%,rgba(255,110,199,.55) 58%,rgba(255,255,255,.8) 62%,transparent 72%);background-size:250% 100%;mix-blend-mode:screen;animation:sh 4s linear infinite;pointer-events:none}
+@keyframes sh{from{background-position:150% 0}to{background-position:-100% 0}}
+@media(prefers-reduced-motion:reduce){.logo:after{display:none}}
+</style></head><body>
 <p class="dim">PS C:\rewecoin&gt; <span class="ok">type</span> whitepaper.md</p>
 <h1>ReweCoin (RWC) — Whitepaper</h1>
 <p class="dim">Version 0.2 — Draft, October 2026</p>
@@ -71,7 +82,7 @@ html{background:linear-gradient(#ff8c00,#d96800) fixed;min-height:100%}body{back
 <li>Emission projections assume the target block time; real timelines vary with hashrate.</li>
 <li>Not financial advice. RWC should not be treated as an investment absent a documented utility case.</li></ul>
 
-<footer><p><a href="https://rewecoin.com/"><img src="https://rewecoin.com/assets/img/logo-wordmark.png" alt="ReweCoin" style="max-width:220px;height:auto;display:block"></a></p><p class="dim">PS C:\rewecoin&gt; <span class="ok">Get-Links</span></p>
+<footer><p><a class="logo" href="https://rewecoin.com/"><img src="https://rewecoin.com/assets/img/logo-wordmark.png" alt="ReweCoin" style="max-width:220px;height:auto;display:block"></a></p><p class="dim">PS C:\rewecoin&gt; <span class="ok">Get-Links</span></p>
 <a href="https://x.com/ionelxxx1">X</a><a href="https://discord.gg/pVDyKAqeF">Discord</a><a href="https://t.me/ReweCoin_bot">Telegram</a><a href="https://github.com/00impera">GitHub</a>
 <p class="dim">© 2026 ReweCoin · <a href="https://rewecoin.com/">rewecoin.com</a></p></footer>
 </body></html>
