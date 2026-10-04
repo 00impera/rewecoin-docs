@@ -1,6 +1,6 @@
 # ReweCoin — Supply & Emission
 
-All figures on this page were verified directly against the running mainnet node (`rewecoin-cli`) and the consensus source code (`chainparams.cpp`, `consensus/params.h`) as of **September 26, 2026**, at mainnet block height 945. None of these numbers are estimates or marketing claims.
+All figures on this page were verified directly against the running mainnet node (`rewecoin-cli`) and the consensus source code (`chainparams.cpp`, `consensus/params.h`) as of **October 4, 2026**, at mainnet block height 2388. None of these numbers are estimates or marketing claims.
 
 ## Consensus
 
@@ -18,20 +18,28 @@ All figures on this page were verified directly against the running mainnet node
 |---|---|
 | Initial block reward | 50 RWC / block |
 | Halving interval | 840,960 blocks (~2 years at target block time) |
-| Premine | **None** — 0 RWC to founders, 0 to funding streams, verified at every checked height |
+| Premine | **None at protocol level** — no genesis allocation, 0 RWC founders' reward, 0 to funding streams. All blocks mined to date by the project team; public mining not yet open |
 | Founders' reward | 0 RWC (disabled) |
 | Technical safety cap (`MAX_MONEY`) | 100,000,000 RWC *(overflow guard, not the real emission target — see below)* |
 | Theoretical asymptotic total supply | **~84,093,434 RWC** |
 
 The 100,000,000 RWC `MAX_MONEY` constant is a consensus-layer overflow safeguard inherited from the zcashd codebase, not a target. The actual total supply, as the halving curve approaches zero reward, converges to approximately 84.09 million RWC — it will never be fully reached, only approached asymptotically, exactly like Bitcoin's 21M figure is a limit, not a hard stop.
 
-## Verified on-chain proof of fair launch
+## On-chain supply verification
 
-At block 945, the chain holds exactly:
+At block 2388, the chain holds exactly:
 
-945 blocks × 50 RWC = 47,250 RWC
+2388 blocks × 50 RWC = 119,400 RWC
 
-This matches the node's own reported `chainValue` (47,250 RWC) exactly — confirming that **100% of circulating supply has come from public mining**, with no hidden pre-mine or off-schedule issuance.
+This matches the node's own reported `chainValue` (119,400 RWC) exactly: no off-schedule issuance. It does not show who mined the blocks. **All blocks mined to date were mined by the project team; public mining is not yet open.**
+
+## Current status (October 4, 2026)
+
+- No protocol-level premine
+- No founders' reward in the consensus rules
+- No genesis allocation
+- All blocks mined to date by the project team
+- Public mining not yet open
 
 ## Emission schedule (projected, theoretical)
 
@@ -42,8 +50,8 @@ Real dates assume the network sustains its 75-second target block time continuou
 | 1 | 0 – 840,960 | 50 | 42,048,000 | Year 2 |
 | 2 | 840,960 – 1,681,920 | 25 | 63,072,000 | Year 4 |
 | 3 | 1,681,920 – 2,522,880 | 12.5 | 73,284,000 | Year 6 |
-| 4 | 2,522,880 – 3,363, 840 | 6.25 | 78,840,000 | Year 8 |
-| 5 | 3,363, 840 – 4,204,800 | 3.125 | 81,468,000 | Year 10 |
+| 4 | 2,522,880 – 3,363,840 | 6.25 | 78,840,000 | Year 8 |
+| 5 | 3,363,840 – 4,204,800 | 3.125 | 81,468,000 | Year 10 |
 | 6 | 4,204,800 – 5,045,760 | 1.5625 | 82,782,000 | Year 12 |
 | 7+| ... | ... | asymptotic → ~84,093,434 | Year 14+ |
 

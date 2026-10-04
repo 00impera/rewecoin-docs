@@ -8,7 +8,7 @@
 
 ## 1. What is ReweCoin?
 
-ReweCoin (ticker: **RWC**) is an independent, standalone Proof-of-Work blockchain built on the Zcash codebase (zcashd 6.0.0). It launched its own mainnet on **September 21, 2026**, with no premine and no founders' allocation — every RWC in circulation has been earned through public mining from block zero.
+ReweCoin (ticker: **RWC**) is an independent, standalone Proof-of-Work blockchain built on the Zcash codebase (zcashd 6.0.0). It launched its own mainnet on **September 21, 2026**, with no protocol-level premine, no founders' reward in the consensus rules and no genesis allocation. All blocks mined to date (height 2388, October 4, 2026) were mined by the project team; public mining is not yet open.
 
 ReweCoin inherits Zcash's transaction model (transparent and shielded pools, UTXO-based ledger) and its Equihash Proof-of-Work consensus, while operating as a fully separate chain with its own genesis block, its own emission schedule, and its own network parameters.
 
@@ -57,7 +57,7 @@ Full detail: see [`tokenomics/supply-and-emission.md`](./tokenomics/supply-and-e
 
 - **Initial block reward:** 50 RWC
 - **Halving interval:** 840,960 blocks (~2 years at target block time)
-- **Premine:** None (verified on-chain)
+- **Premine:** None at protocol level (no genesis allocation, no founders' reward). All blocks mined to date by the project team; public mining not yet open
 - **Theoretical asymptotic total supply:** ~84,093,434 RWC
 - **Technical overflow cap:** 100,000,000 RWC (not the real target — see tokenomics doc)
 
