@@ -119,18 +119,24 @@ body,
   font-size: 0.95rem;
 }
 
-/* ---------- Neon green text ---------- */
+/* ---------- ReweCoin gold + neon theme ---------- */
 $neon: #39FF14;
+$glow: #00FF66;
+$inner: #00CC00;
+$gold: #FFD700;
+$gold-deep: #B8860B;
+$gold-light: #FFE566;
 
-body,
-.main-content,
+body {
+  background: #000000 radial-gradient(ellipse at 50% 0%, rgba(57,255,20,0.16) 0%, #050A0E 45%, #000000 100%) no-repeat;
+  color: $neon;
+}
+.main-content { background: transparent; color: $neon; }
 .main-content p,
 .main-content li,
 .main-content blockquote,
 .main-content table td,
-.main-content table th {
-  color: $neon;
-}
+.main-content table th { color: $neon; }
 
 .main-content h1,
 .main-content h2,
@@ -138,14 +144,104 @@ body,
 .main-content h4,
 .main-content h5,
 .main-content h6 {
-  color: $neon;
-  text-shadow: 0 0 8px rgba(57,255,20,0.35);
+  color: $gold;
+  text-shadow: 0 0 10px rgba(255,215,0,0.25);
 }
+.main-content h2 {
+  border-bottom: 1px solid rgba(0,204,0,0.35);
+  padding-bottom: 6px;
+}
+.main-content ul li::marker { color: $inner; }
 
 .main-content a {
-  color: #B7D34B;
+  color: $glow;
+  font-weight: 600;
   text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s, text-shadow .2s;
 }
-.main-content a:hover {
-  color: #FFFFFF;
+.main-content a:hover,
+.main-content a:focus {
+  color: $gold-light;
+  text-shadow: 0 0 6px $neon, 0 0 16px $neon;
 }
+
+.main-content code { background: #041204; color: $gold-light; }
+.main-content pre { background: #041204; border: 1px solid rgba(0,204,0,0.45); }
+.main-content table th { background: #031403; color: $gold; }
+.main-content table tr { background: #020A02; }
+.main-content table tr:nth-child(2n) { background: #041204; }
+.main-content table td,
+.main-content table th { border-color: rgba(0,204,0,0.35); }
+.main-content hr { border-top-color: rgba(0,204,0,0.45); }
+
+.page-header {
+  background: radial-gradient(ellipse at 50% 50%, #000000 0%, #050A0E 30%, #004400 78%, #003300 100%);
+  box-shadow: inset 0 0 90px rgba(57,255,20,0.30), 0 2px 18px rgba(57,255,20,0.35);
+  border-bottom: 1px solid $inner;
+}
+.page-header .project-name {
+  background: linear-gradient(90deg, $gold-deep, $gold, $gold-light, #FFFFFF, #a259ff, #00eaff, #ff6ec7, $gold-light, $gold, $gold-deep);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 10px rgba(57,255,20,0.45));
+  animation: rwc-shimmer 6s ease-in-out infinite alternate;
+}
+.page-header .project-tagline {
+  color: $neon;
+  text-shadow: 0 0 8px rgba(57,255,20,0.45);
+}
+@keyframes rwc-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-header .project-name { animation: none; }
+}
+
+.btn {
+  background: linear-gradient(135deg, $gold-deep, $gold);
+  color: #050A0E;
+  border: 1px solid $gold-light;
+  font-weight: 700;
+  transition: box-shadow .2s, transform .2s, background .2s;
+}
+.btn:hover {
+  background: linear-gradient(135deg, $gold, $gold-light);
+  box-shadow: 0 0 18px rgba(57,255,20,0.65);
+  border-color: $neon;
+  transform: translateY(-1px);
+}
+
+.main-content .logo img {
+  max-width: 260px;
+  height: auto;
+  display: block;
+  margin: 0 0 12px;
+  filter: drop-shadow(0 0 10px rgba(57,255,20,0.35));
+}
+.main-content .social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 8px 0 18px;
+}
+.main-content .social a { display: inline-block; line-height: 0; text-decoration: none; }
+.main-content .social img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px $gold, 0 0 10px rgba(57,255,20,0.35);
+  transition: transform .2s, box-shadow .2s;
+}
+.main-content .social a:hover img,
+.main-content .social a:focus img {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 2px $gold-light, 0 0 22px rgba(57,255,20,0.9);
+}
+
+.site-footer { color: $inner; border-top-color: rgba(0,204,0,0.45); }
+.site-footer a { color: $glow; }
