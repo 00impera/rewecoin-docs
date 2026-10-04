@@ -4,7 +4,7 @@ Official public documentation for **ReweCoin**, a Proof-of-Work blockchain built
 
 ## Contents
 
-- [Whitepaper](./whitepaper.md)
+- [Whitepaper](./whitepaper.html)
 - [Tokenomics — Supply & Emission](./tokenomics/supply-and-emission.md)
 
 ## Links
