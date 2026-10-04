@@ -118,3 +118,34 @@ body,
 .main-content li {
   font-size: 0.95rem;
 }
+
+/* ---------- Neon green text ---------- */
+$neon: #39FF14;
+
+body,
+.main-content,
+.main-content p,
+.main-content li,
+.main-content blockquote,
+.main-content table td,
+.main-content table th {
+  color: $neon;
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  color: $neon;
+  text-shadow: 0 0 8px rgba(57,255,20,0.35);
+}
+
+.main-content a {
+  color: #B7D34B;
+  text-decoration: underline;
+}
+.main-content a:hover {
+  color: #FFFFFF;
+}
