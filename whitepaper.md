@@ -71,7 +71,7 @@ Full detail: see [`tokenomics/supply-and-emission.md`](./tokenomics/supply-and-e
 - [x] Faucet
 - [ ] Public whitepaper (this document)
 - [ ] Landing page (rewecoin.com)
-- [ ] Community channels (Telegram, Discord, X)
+- [ ] Community channels (Telegram, Discord, X) <img src="assets/icons/telegram.svg" alt="Telegram" width="28" height="28" style="vertical-align:middle"> <img src="assets/icons/discord.svg" alt="Discord" width="28" height="28" style="vertical-align:middle"> <img src="assets/icons/x.svg" alt="X" width="28" height="28" style="vertical-align:middle"> <img src="assets/icons/privacy.svg" alt="Privacy" width="28" height="28" style="vertical-align:middle">
 - [ ] End-to-end public test: faucet → wallet A → send → wallet B → explorer confirmation
 - [ ] Defined utility layer (see Section 4)
 - [ ] Exchange listing / swap mechanism — **note:** this may carry regulatory implications (money transmission / KYC-AML) depending on jurisdiction and structure; recommend legal review before implementation, not just engineering.
