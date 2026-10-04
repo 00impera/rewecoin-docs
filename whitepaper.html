@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ReweCoin (RWC) — Whitepaper</title><meta name="theme-color" content="#000000">
+<style>
+:root{--fg:#C8960C;--gold:#FFD700;--hi:#FFE566;--g:#39FF14;--glow:#00FF66;--in:#00CC00;--dedge:#004400}
+*{box-sizing:border-box}
+html{background-color:#000;background-image:radial-gradient(ellipse at 50% 25%,#050A0E 0%,#000 50%,#003300 100%);background-attachment:fixed;min-height:100%}
+body{margin:0 auto;max-width:880px;padding:20px 16px 60px;background:transparent;color:var(--fg);font:15px/1.6 Consolas,"Cascadia Mono","Courier New",monospace}
+a{color:var(--g);font-weight:700;text-decoration:underline;text-shadow:0 0 6px rgba(57,255,20,.45)}
+a:hover{background:var(--g);color:#000;text-shadow:none}
+h1,h2,h3{color:var(--gold);font-weight:700;margin:1.6em 0 .4em;text-shadow:0 0 8px rgba(255,215,0,.35)}
+h1{font-size:1.5em;display:inline-block;background:#000;border:1px solid var(--in);padding:6px 12px;color:var(--hi);box-shadow:0 0 14px rgba(0,255,102,.45)}
+h2{font-size:1.2em}h2:before{content:"PS> ";color:var(--g)}h3{font-size:1em;color:var(--hi)}
+b,strong{color:var(--gold)}
+code{background:#000;color:var(--g);border:1px solid var(--in);border-radius:4px;padding:1px 6px;font-size:.95em;white-space:nowrap;box-shadow:0 0 6px rgba(0,255,102,.3)}
+.dim{color:#8a6a0a}.ok{color:var(--g)}.wip{color:#ff6ec7;font-weight:700}
+table{border-collapse:collapse;display:block;overflow-x:auto}td,th{border:1px solid var(--dedge);padding:4px 10px;text-align:left}th{color:var(--g);background:#000}
+ul{padding-left:1.2em}blockquote{border-left:3px solid var(--g);margin:1em 0;padding-left:12px;color:#8a6a0a}
+.box{background:#000;color:var(--gold);border:1px solid var(--in);padding:10px 14px;margin:10px 0;box-shadow:0 0 14px rgba(0,255,102,.35)}.box code{border:0;padding:0;box-shadow:none}
+footer{margin-top:50px;background:#000;border:1px solid var(--dedge);padding:14px 16px;box-shadow:0 0 18px rgba(57,255,20,.25)}
+footer a{margin-right:16px}footer p{color:var(--fg)}
+.logo{position:relative;display:inline-block;overflow:hidden}.logo:hover{background:none}.logo img{display:block;max-width:220px;height:auto;filter:drop-shadow(0 0 6px rgba(57,255,20,.6))}
+.logo:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(162,89,255,.55) 42%,rgba(0,234,255,.55) 50%,rgba(255,110,199,.55) 58%,rgba(255,255,255,.8) 62%,transparent 72%);background-size:250% 100%;mix-blend-mode:screen;animation:sh 4s linear infinite;pointer-events:none}
+@keyframes sh{from{background-position:150% 0}to{background-position:-100% 0}}
+@media(prefers-reduced-motion:reduce){.logo:after{display:none}}
+</style></head><body>
+<p class="dim">PS C:\rewecoin&gt; <span class="ok">type</span> whitepaper.md</p>
+<h1>ReweCoin (RWC) — Whitepaper</h1>
+<p class="dim">Version 0.2 — Draft, October 2026</p>
+<blockquote>Parameters are verified from the ReweCoin mainnet node and its consensus source. Sections marked <b>TBD</b> are open for the team to finalize; no invented figures.</blockquote>
+
+<h2>1. What is ReweCoin?</h2>
+<p>ReweCoin (<b>RWC</b>) is an independent Proof-of-Work blockchain built on the Zcash codebase (zcashd 6.0.0). Mainnet launched on <b>September 21, 2026</b> with no protocol-level premine, no founders' reward in the consensus rules and no genesis allocation. All blocks mined to date (height 2388, October 4, 2026) were mined by the project team; public mining is not yet open.</p>
+<p>It inherits Zcash's transaction model (transparent and shielded pools, UTXO ledger) and Equihash consensus, as a fully separate chain with its own genesis, emission schedule and parameters.</p>
+
+<h2>2. Why does it exist?</h2>
+<p><b>TBD</b> — the project's motivation in the founder's own words: what gap it fills and how it differs from using Zcash or another chain.</p>
+
+<h2>3. How does it work?</h2>
+<h3>3.1 Consensus</h3>
+<p>Proof-of-Work with <b>Equihash 200,9</b>, memory-hard and designed to keep mining accessible.</p>
+<ul><li>Target block time: <code>75 s</code></li><li>Difficulty adjustment: dynamic, per block (inherited from zcashd)</li></ul>
+<h3>3.2 Transaction model</h3>
+<p>Transparent and shielded pools (Sapling/Orchard present in the protocol; usage so far is mostly transparent). Mainnet addresses start with <code>C7</code>.</p>
+<h3>3.3 Network infrastructure</h3>
+<table><tr><th>Component</th><th>Status</th><th>Link</th></tr>
+<tr><td>Mainnet node</td><td class="ok">Live</td><td>—</td></tr>
+<tr><td>Testnet</td><td class="ok">Live</td><td><a href="https://testnet.rewecoin.com">testnet.rewecoin.com</a></td></tr>
+<tr><td>Block explorer</td><td class="ok">Live</td><td><a href="https://explorer.rewecoin.com">explorer.rewecoin.com</a></td></tr>
+<tr><td>Web wallet</td><td class="ok">Live</td><td><a href="https://wallet.rewecoin.com">wallet.rewecoin.com</a></td></tr>
+<tr><td>Faucet</td><td class="ok">Live</td><td><a href="https://wallet.rewecoin.com/receive.html">via wallet</a></td></tr>
+<tr><td>Solo mining</td><td class="ok">Live</td><td>Equihash 200,9 miners</td></tr>
+<tr><td>Mining pool (stratum)</td><td class="wip">Testing</td><td>Internal testnet tests; not public yet</td></tr></table>
+
+<h3>3.4 Mining pool (in testing)</h3>
+<ul><li>Stratum server for Equihash 200,9, including NU5 block templates.</li>
+<li>Local Equihash verification of every solution before it reaches the node.</li>
+<li>Payout address required: miners connect as <code>-u ADDRESS.worker</code>; the address is validated by the node.</li>
+<li>Found blocks are journaled; payouts wait for coinbase maturity (101 blocks), skip orphans, and are idempotent.</li>
+<li>Not yet implemented: variable difficulty (vardiff), PPLNS share accounting, TLS.</li></ul>
+
+<h2>4. What utility does it have?</h2>
+<p><b>TBD</b> — today RWC is base-layer infrastructure (send, receive, mine, explore). Directions under consideration, to be listed only with a concrete plan:</p>
+<ul><li>Payment rail for goods/services</li><li>Membership / access-gating token</li><li>Marketplace settlement currency</li><li>Staking or reward mechanisms (needs protocol-level design; chain is pure PoW)</li></ul>
+
+<h2>5. Supply and emission</h2>
+<p>Detail: <a href="https://00impera.github.io/rewecoin-docs/tokenomics/supply-and-emission.html">tokenomics/supply-and-emission</a></p>
+<ul><li>Initial block reward: <code>50 RWC</code></li><li>Halving interval: <code>840,960</code> blocks (~2 years)</li><li>Premine: none at protocol level (no genesis allocation, no founders' reward). All blocks mined to date by the project team; public mining not yet open</li><li>Asymptotic supply: ~84,093,434 RWC</li><li>Technical overflow cap: 100,000,000 RWC (not the target)</li></ul>
+
+<h2>6. Roadmap</h2>
+<ul>
+<li class="ok">[x] Mainnet + testnet live</li><li class="ok">[x] Block explorer</li><li class="ok">[x] Web wallet</li><li class="ok">[x] Faucet</li>
+<li class="ok">[x] Public whitepaper (this document)</li><li class="ok">[x] Landing page (<a href="https://rewecoin.com/">rewecoin.com</a>)</li><li class="ok">[x] Community channels (Telegram, Discord, X)</li>
+<li class="wip">[~] Mining pool: Equihash verification, address validation and payouts built; testnet runs ongoing</li>
+<li>[ ] Pool on mainnet (vardiff, PPLNS, TLS, firewall)</li>
+<li>[ ] End-to-end public test: faucet → wallet A → send → wallet B → explorer</li>
+<li>[ ] Defined utility layer (Section 4)</li>
+<li>[ ] Exchange listing / swap (may carry money-transmission / KYC-AML implications; get legal review first)</li>
+<li>[ ] Mobile app or PWA</li></ul>
+
+<h2>7. Risks and disclaimers</h2>
+<ul><li>Early-stage network: difficulty is at its floor and peer count is minimal. Block timing and security assumptions will shift as the network grows.</li>
+<li>Emission projections assume the target block time; real timelines vary with hashrate.</li>
+<li>Not financial advice. RWC should not be treated as an investment absent a documented utility case.</li></ul>
+
+<footer><p><a class="logo" href="https://rewecoin.com/"><img src="https://rewecoin.com/assets/img/logo-wordmark.png" alt="ReweCoin" style="max-width:220px;height:auto;display:block"></a></p><p class="dim">PS C:\rewecoin&gt; <span class="ok">Get-Links</span></p>
+<a href="https://x.com/ionelxxx1" aria-label="X" style="margin:0 6px"><img src="assets/icons/x.svg" alt="X" width="28" height="28" style="vertical-align:middle"></a><a href="https://discord.gg/pVDyKAqeF" aria-label="Discord" style="margin:0 6px"><img src="assets/icons/discord.svg" alt="Discord" width="28" height="28" style="vertical-align:middle"></a><a href="https://t.me/ReweCoin_bot" aria-label="Telegram" style="margin:0 6px"><img src="assets/icons/telegram.svg" alt="Telegram" width="28" height="28" style="vertical-align:middle"></a><a href="https://github.com/00impera" aria-label="GitHub" style="margin:0 6px"><img src="assets/icons/github.svg" alt="GitHub" width="28" height="28" style="vertical-align:middle"></a>
+<p class="dim">© 2026 ReweCoin · <a href="https://rewecoin.com/">rewecoin.com</a></p></footer>
+</body></html>
