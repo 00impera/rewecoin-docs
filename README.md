@@ -44,7 +44,8 @@ Pool: **Equihash (200,9) · Zcash-style PoW · PPLNS · payouts to transparent a
 | Setting | Value |
 |---|---|
 | Stratum host | `178.104.208.90` |
-| Stratum port | `3092` (variable difficulty) |
+| Stratum port | `3092` (automatic difficulty) |
+| Stratum port (fixed difficulty) | `3093` |
 | Algorithm | Equihash `200,9` |
 | Personalization | `ZcashPoW` |
 | Username | `YOUR_RWC_ADDRESS.workername` |
@@ -81,7 +82,7 @@ If your miniZ version rejects `--pers`, run it without that flag.
 nheqminer (CPU):
 
 ```bash
-nheqminer -l 178.104.208.90:3092 -u C7YourAddressHere.rig1
+nheqminer -l 178.104.208.90:3093 -u C7YourAddressHere.rig1
 ```
 
 Any other Equihash 200,9 miner with personalization `ZcashPoW` works with the same host, port, username and password. Replace `C7YourAddressHere` with your own address. A typo sends your earnings to the wrong place and they cannot be recovered.
