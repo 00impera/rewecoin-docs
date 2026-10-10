@@ -123,6 +123,28 @@ Payouts are sent in cycles. On a young chain with few blocks, a payout can wait 
 
 Still stuck? Ask on [Discord](https://discord.gg/pVDyKAqeF).
 
+## Connecting to the network
+
+ReweCoin mainnet has three public seed nodes:
+
+| Seed | Host | P2P port |
+|---|---|---|
+| seed1 | `seed1.rewecoin.com` | 28233 |
+| seed2 | `seed2.rewecoin.com` | 28233 |
+| seed3 | `seed3.rewecoin.com` | 28233 |
+
+Add them to your `rewecoin.conf`:
+
+```
+addnode=seed1.rewecoin.com:28233
+addnode=seed2.rewecoin.com:28233
+addnode=seed3.rewecoin.com:28233
+```
+
+Check that you are connected with `rewecoin-cli getconnectioncount`.
+
+For a read-only HTTP interface (blocks, transactions, supply, hashrate), see the [Public API](./api.html).
+
 ## Repository contents
 
 | Path | Description |
