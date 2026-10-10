@@ -3,7 +3,7 @@
 Official public documentation for **ReweCoin**, a Proof-of-Work blockchain built on the Zcash codebase (zcashd 6.0.0).
 
 ## Contents
-
+- [Public API](./api.html)
 - [Whitepaper](./whitepaper.html)
 - [Tokenomics — Supply & Emission](./tokenomics/supply-and-emission.md)
 
