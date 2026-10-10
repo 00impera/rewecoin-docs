@@ -117,7 +117,7 @@ Payouts are sent in cycles. On a young chain with few blocks, a payout can wait 
 
 | Problem | What to do |
 |---|---|
-| Cannot connect | Check host and port `3092`, and that your firewall allows outgoing TCP |
+| Cannot connect | Check host and port (`3092` for miniZ, `3093` for nheqminer), and that your firewall allows outgoing TCP |
 | Shares rejected | Confirm `--par=200,9` and personalization `ZcashPoW` |
 | Unauthorized worker | The address must be a valid transparent RWC address starting with `C7` |
 | No payout yet | You need at least 0.01 RWC, and the pool may be waiting on confirmations |
