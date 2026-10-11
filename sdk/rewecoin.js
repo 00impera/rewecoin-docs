@@ -1,7 +1,7 @@
 /*!
  * ReweCoin JavaScript SDK
  *
- * Thin client for the public read-only REST API (https://rest.rewecoin.com).
+ * Thin client for the public read-only REST API (https://api.rewecoin.com).
  * No dependencies. Works in Node.js 18+ (uses global fetch) and in browsers.
  *
  * Usage (browser):
@@ -13,7 +13,7 @@
  *   const { ReweCoin } = require("./rewecoin.js");
  *
  * getBalance(address) calls the explorer API (options.explorerUrl, default
- * https://mainnet-api.rewecoin.com), not rest.rewecoin.com. Its /api/address
+ * https://api.rewecoin.com). Its /api/address
  * route sends CORS headers, so it works in browsers.
  * Amounts are converted from zatoshi (1 RWC = 100,000,000); the unit
  * is inferred from data, not from API documentation.
@@ -29,8 +29,8 @@
 })(typeof self !== "undefined" ? self : this, function () {
   "use strict";
 
-  var DEFAULT_BASE_URL = "https://rest.rewecoin.com";
-  var DEFAULT_EXPLORER_URL = "https://mainnet-api.rewecoin.com";
+  var DEFAULT_BASE_URL = "https://api.rewecoin.com";
+  var DEFAULT_EXPLORER_URL = "https://api.rewecoin.com";
   var ZAT_PER_RWC = 100000000;
 
   function ReweCoinError(message, status, body) {
@@ -54,10 +54,10 @@
     }
   }
 
-  ReweCoin.prototype._get = function (path, base) {
+  ReweCoin.prototype._get = function (path, base, timeoutMs) {
     var self = this;
     var controller = typeof AbortController === "function" ? new AbortController() : null;
-    var timer = controller ? setTimeout(function () { controller.abort(); }, this.timeoutMs) : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, timeoutMs || this.timeoutMs) : null;
     var url = (base || this.baseUrl) + path;
 
     return this._fetch(url, {
@@ -84,7 +84,7 @@
     }, function (err) {
       if (timer) clearTimeout(timer);
       if (err && err.name === "AbortError") {
-        throw new ReweCoinError("Request to " + path + " timed out after " + self.timeoutMs + " ms");
+        throw new ReweCoinError("Request to " + path + " timed out after " + (timeoutMs || self.timeoutMs) + " ms");
       }
       throw new ReweCoinError("Network error calling " + path + ": " + (err && err.message ? err.message : err));
     });
@@ -113,6 +113,8 @@
   ReweCoin.prototype.getHashrate = function () { return this._get("/api/hashrate"); };
 
   ReweCoin.prototype.getSupply = function () { return this._get("/api/supply"); };
+
+  ReweCoin.prototype.getRichList = function () { return this._get("/api/richlist", undefined, 30000); };
 
   ReweCoin.prototype.getBalance = function (address, opts) {
     var s = String(address || "").trim();

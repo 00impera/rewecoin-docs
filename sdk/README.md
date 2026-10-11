@@ -4,8 +4,8 @@ A small, dependency-free client for the ReweCoin public REST API ([API docs](../
 
 - Works in Node.js 18+ (uses the global `fetch`) and in browsers.
 - Single file: `rewecoin.js`.
-- Default API: `https://rest.rewecoin.com` (mainnet).
-- `getBalance` uses the explorer API, `https://mainnet-api.rewecoin.com`.
+- Default API: `https://api.rewecoin.com` (mainnet).
+- `getBalance` uses the same host by default (see the `explorerUrl` option).
 
 ## Usage
 
@@ -37,6 +37,7 @@ In a browser, load the file with `<script src="rewecoin.js"></script>` and use `
 | `getTx(txid)` | `/api/tx/{txid}` | Transaction by ID |
 | `getHashrate()` | `/api/hashrate` | Estimated network hashrate |
 | `getSupply()` | `/api/supply` | Issued supply and pool breakdown |
+| `getRichList()` | `/api/richlist` | Top addresses by balance (transparent only). Cached about 5 minutes; an uncached call can take about 15 s, so it uses a 30 s timeout |
 | `getBalance(address, opts)` | explorer `/api/address/{address}` | Balance, received, sent, transaction count |
 | `health()` | `/api/health` | `true` if the API is up |
 
@@ -59,8 +60,8 @@ Returns:
 
 Notes:
 
-- **Browsers.** The explorer's `/api/address` route sends `access-control-allow-origin: *`, so `getBalance` works from any web page. Other explorer routes do not send CORS headers.
-- **Separate server.** It queries the explorer, not `rest.rewecoin.com`. Change it with the `explorerUrl` option. If the explorer is down, only `getBalance` fails.
+- **Browsers.** The explorer's `/api/address` route sends `access-control-allow-origin: *`, so `getBalance` works from any web page. Other routes tested (such as `/api/block/latest`) send it too.
+- **Explorer URL.** `getBalance` uses the `explorerUrl` option, which now defaults to the same host as the other methods.
 - **Response size.** The explorer returns every transaction ID of the address, about 67 bytes each. An address with 1,088 transactions returns about 71 KB. The SDK drops `txids` unless you ask for them, but the full response is still downloaded.
 - **Units.** Zatoshi is inferred from the data (a pool address received 5,075,004,140,000, which matches 1,015 blocks of 50 RWC plus fees). The explorer API does not document it.
 - An address with no history returns `balance: 0`. An invalid address (bad checksum) rejects with `ReweCoinError` (`status` 404, message `Invalid address`).
@@ -69,14 +70,10 @@ Notes:
 
 ```js
 const rwc = new ReweCoin({
-  baseUrl: "https://rest.rewecoin.com",
-  explorerUrl: "https://mainnet-api.rewecoin.com",
+  baseUrl: "https://api.rewecoin.com",
+  explorerUrl: "https://api.rewecoin.com",
   timeoutMs: 10000
 });
 ```
 
-Failed requests reject with a `ReweCoinError` that has `message`, `status` and `body`. The REST API allows about 5 requests per second per IP and answers `429` above that.
-
-## Not available yet
-
-Rich list method. The SDK has no method for it yet. The data is available from the public API at `GET https://api.rewecoin.com/api/richlist` (transparent addresses only).
+Failed requests reject with a `ReweCoinError` that has `message`, `status` and `body`. The API limits requests per IP and answers `429` above the limit; see the API docs for current limits.

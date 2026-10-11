@@ -1,6 +1,6 @@
 {
   "name": "rewecoin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Dependency-free JavaScript client for the ReweCoin (RWC) public REST API",
   "main": "rewecoin.js",
   "files": ["rewecoin.js", "README.md"],
