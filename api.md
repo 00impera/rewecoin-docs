@@ -159,4 +159,4 @@ Do not use `api.rewecoin.com` for mainnet data: it serves testnet.
 
 Rich list. It requires an address index, which the node does not have at the moment.
 
-Address balances are not served by this API. The [JavaScript SDK](sdk/) reads them from the explorer API (mainnet-api.rewecoin.com) with `getBalance`, from Node.js only: that API sends no CORS headers, so browsers block it.
+Address balances are not served by this API. The [JavaScript SDK](sdk/) reads them from the explorer API (mainnet-api.rewecoin.com) with `getBalance`, including from browsers: its `/api/address` route sends CORS headers.

@@ -2,8 +2,7 @@
  * ReweCoin JavaScript SDK
  *
  * Thin client for the public read-only REST API (https://rest.rewecoin.com).
- * No dependencies. Works in Node.js 18+ (uses global fetch) and in browsers,
- * except getBalance, which is Node.js only (see below).
+ * No dependencies. Works in Node.js 18+ (uses global fetch) and in browsers.
  *
  * Usage (browser):
  *   <script src="rewecoin.js"></script>
@@ -14,9 +13,9 @@
  *   const { ReweCoin } = require("./rewecoin.js");
  *
  * getBalance(address) calls the explorer API (options.explorerUrl, default
- * https://mainnet-api.rewecoin.com), not rest.rewecoin.com. That API sends no
- * CORS headers, so browsers block the call. Use getBalance from Node.js or a
- * backend. Amounts are converted from zatoshi (1 RWC = 100,000,000); the unit
+ * https://mainnet-api.rewecoin.com), not rest.rewecoin.com. Its /api/address
+ * route sends CORS headers, so it works in browsers.
+ * Amounts are converted from zatoshi (1 RWC = 100,000,000); the unit
  * is inferred from data, not from API documentation.
  */
 (function (root, factory) {

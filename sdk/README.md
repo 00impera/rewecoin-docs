@@ -2,7 +2,7 @@
 
 A small, dependency-free client for the ReweCoin public REST API ([API docs](../api.html)).
 
-- Works in Node.js 18+ (uses the global `fetch`) and in browsers, except `getBalance` (Node.js only, see below).
+- Works in Node.js 18+ (uses the global `fetch`) and in browsers.
 - Single file: `rewecoin.js`.
 - Default API: `https://rest.rewecoin.com` (mainnet).
 - `getBalance` uses the explorer API, `https://mainnet-api.rewecoin.com`.
@@ -37,7 +37,7 @@ In a browser, load the file with `<script src="rewecoin.js"></script>` and use `
 | `getTx(txid)` | `/api/tx/{txid}` | Transaction by ID |
 | `getHashrate()` | `/api/hashrate` | Estimated network hashrate |
 | `getSupply()` | `/api/supply` | Issued supply and pool breakdown |
-| `getBalance(address, opts)` | explorer `/api/address/{address}` | Balance, received, sent, transaction count (Node.js only) |
+| `getBalance(address, opts)` | explorer `/api/address/{address}` | Balance, received, sent, transaction count |
 | `health()` | `/api/health` | `true` if the API is up |
 
 ## getBalance
@@ -59,7 +59,7 @@ Returns:
 
 Notes:
 
-- **Node.js only.** The explorer API sends no CORS headers, so browsers block the request. Call it from a backend.
+- **Browsers.** The explorer's `/api/address` route sends `access-control-allow-origin: *`, so `getBalance` works from any web page. Other explorer routes do not send CORS headers.
 - **Separate server.** It queries the explorer, not `rest.rewecoin.com`. Change it with the `explorerUrl` option. If the explorer is down, only `getBalance` fails.
 - **Response size.** The explorer returns every transaction ID of the address, about 67 bytes each. An address with 1,088 transactions returns about 71 KB. The SDK drops `txids` unless you ask for them, but the full response is still downloaded.
 - **Units.** Zatoshi is inferred from the data (a pool address received 5,075,004,140,000, which matches 1,015 blocks of 50 RWC plus fees). The explorer API does not document it.
