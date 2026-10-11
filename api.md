@@ -113,7 +113,91 @@ The list is cached and covers transparent addresses only; shielded funds are not
 
 ## Token routes
 
-`/api/token*` and `/api/tx/{txid}/token` exist for the token platform. They are not documented yet.
+Read-only routes for tokens created on the ReweCoin token layer.
+
+- Token IDs look like `tok_a7d6f80f8a34`. Token-layer addresses start with `rwu1`, not `C7`.
+- Amounts (`total_supply`, `balance`, `amount`) are **strings** in the smallest unit. Divide by `10^decimals` to get the display value.
+- Errors are JSON, for example `{"error": "token inexistent"}` with status `404` (the message text is in Romanian).
+
+### `GET /api/tokens`
+
+All tokens, newest first.
+
+```json
+{
+  "count": 7,
+  "tokens": [
+    {
+      "token_id": "tok_a7d6f80f8a34",
+      "name": "$MOTO",
+      "symbol": "MOTO",
+      "decimals": 8,
+      "total_supply": "10000000000000000",
+      "holders_count": 1,
+      "transfers_count": 0,
+      "deploy_txid": "3f5ce1cc...",
+      "deploy_block_height": 3166,
+      "creator_address": "rwu1...",
+      "is_official": true,
+      "is_verified": 1,
+      "is_test": false,
+      "logo_path": "tok_a7d6f80f8a34.png",
+      "logo_status": "approved",
+      "created_at": 1791411864
+    }
+  ]
+}
+```
+
+`is_verified` can be `null`. Logo fields (`logo_status`, `logo_reject_reason`, `logo_uploaded_at`) and `receive_address` are also present and may be `null`.
+
+### `GET /api/token/{token_id}`
+
+One token, same object as in the list above. `404` if the token does not exist.
+
+### `GET /api/token/{token_id}/holders`
+
+Addresses with a balance above zero, largest first.
+
+```json
+{
+  "token_id": "tok_a7d6f80f8a34",
+  "count": 1,
+  "holders": [{"address": "rwu1...", "balance": "10000000000000000"}]
+}
+```
+
+### `GET /api/token/{token_id}/transfers`
+
+Transfers of this token, newest block first.
+
+```json
+{
+  "token_id": "tok_a7d6f80f8a34",
+  "count": 0,
+  "transfers": []
+}
+```
+
+Each transfer has `txid`, `block_height`, `status`, `error_message`, `from`, `to`, `amount` and `executed_at`. `from` may be `null` when the sender is not made public.
+
+### `GET /api/token/{token_id}/balance/{address}`
+
+```json
+{"token_id": "tok_a7d6f80f8a34", "address": "rwu1...", "balance": "0"}
+```
+
+An address with no balance returns `"0"`, not an error.
+
+### `GET /api/tx/{txid}/token`
+
+Tells you whether a transaction is a token deploy or transfer.
+
+```json
+{"kind": "deploy", "token": {"token_id": "tok_a7d6f80f8a34", "symbol": "MOTO"}}
+```
+
+For a successful transfer, `kind` is `"transfer"` and the response also has `to` and `amount`. If the transaction is neither, the answer is `404` with `{"kind": null}`.
 
 ## Not exposed publicly
 
