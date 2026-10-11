@@ -109,7 +109,7 @@ Top transparent addresses by balance.
 }
 ```
 
-The list is cached and covers transparent addresses only; shielded funds are not included.
+The list is cached for about 5 minutes and covers transparent addresses only; shielded funds are not included. The `cached` and `generatedAt` fields show whether the response came from the cache and when the list was built. A request that rebuilds the list can take about 10 to 15 seconds, so use a timeout of at least 30 seconds.
 
 ## Token routes
 
