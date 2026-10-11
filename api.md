@@ -62,12 +62,6 @@ The tip has `confirmations: 1`. Do not treat a transaction as final with very fe
 
 Transaction as returned by the node (Zcash-style fields). Key fields: `txid`, `size`, `version`, `locktime`, `expiryheight`, `vin`, `vout`, `vjoinsplit`, `vShieldedSpend`, `vShieldedOutput`, `orchard`, `blockhash`, `height`, `confirmations`, `time`.
 
-**Known quirk:** in `vout[].scriptPubKey`, the field `addresses` is currently a string, not an array. Handle both forms in your client:
-
-```js
-const addrs = [].concat(vout.scriptPubKey.addresses || []);
-```
-
 ### `GET /api/address/{address}`
 
 Balance and history for a transparent address.
