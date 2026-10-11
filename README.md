@@ -101,8 +101,8 @@ Any other Equihash 200,9 miner with personalization `ZcashPoW` works with the sa
 | Pool fee | 1.5 % |
 | Minimum payout | 0.01 RWC |
 | Payout type | Transparent address |
-| Block maturity | _N confirmations_ <!-- fill in --> |
-| Payout frequency | _every X minutes/hours_ <!-- fill in --> |
+| Block maturity | 100 confirmations |
+| Payout frequency | Pool checks for payable balances every 10 minutes |
 
 Payouts are sent in cycles. On a young chain with few blocks, a payout can wait until the pool's change funds have enough confirmations, so a delay does not mean your balance is lost.
 
