@@ -79,4 +79,4 @@ Failed requests reject with a `ReweCoinError` that has `message`, `status` and `
 
 ## Not available yet
 
-Rich list. It needs an address index on the node, which does not exist at the moment.
+Rich list method. The SDK has no method for it yet. The data is available from the public API at `GET https://api.rewecoin.com/api/richlist` (transparent addresses only).

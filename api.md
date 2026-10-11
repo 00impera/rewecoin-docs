@@ -5,158 +5,145 @@ title: Public API
 
 # ReweCoin Public API
 
-Read-only REST API for the ReweCoin **mainnet**.
+**Base URL (mainnet):** `https://api.rewecoin.com`
 
-**Base URL:** `https://rest.rewecoin.com`
+Read-only REST API returning JSON. No API key required.
 
-All responses are JSON. Only `GET` requests are supported. CORS is open (`Access-Control-Allow-Origin: *`), so the API can be called directly from a browser.
+## Conventions
 
-## Rate limits and caching
-
-| Item | Value |
-|---|---|
-| Rate limit | 5 requests/second per IP, burst of 20 |
-| Over the limit | HTTP `429` |
-| Caching | Responses are cached for a few seconds (see each endpoint) |
-
-If you receive `429`, wait a moment and retry. Polling faster than the cache time returns the same data, so there is no benefit in doing so.
+- All endpoints use `GET`.
+- Amounts are in RWC unless a field name ends in `Zat` / `Sat` (smallest unit, 1 RWC = 100,000,000 zatoshi).
+- Mainnet transparent addresses start with `C7`.
+- Rate limit: 120 requests per 60 seconds per client on address and richlist routes (see the `RateLimit-*` response headers). Back off on `429`.
+- CORS: read endpoints answer `Access-Control-Allow-Origin: *` (no credentials), so they can be called from any browser app.
+- Errors are JSON, e.g. `{"error": "unknown endpoint"}` with a 4xx status.
 
 ## Endpoints
 
-| Endpoint | Description | Cache |
-|---|---|---|
-| `GET /api/network` | Chain, height, difficulty, connections, node version | 5 s |
-| `GET /api/block/latest` | Latest block | 5 s |
-| `GET /api/block/{height}` | Block by height | 5 s |
-| `GET /api/block/{hash}` | Block by hash | 5 s |
-| `GET /api/tx/{txid}` | Transaction by ID | 10 s |
-| `GET /api/hashrate` | Estimated network hashrate | 30 s |
-| `GET /api/supply` | Issued supply and pool breakdown | 60 s |
-| `GET /api/health` | Service health check | none |
+### `GET /api/health`
+
+Liveness check.
+
+```json
+{"ok": true}
+```
 
 ### `GET /api/network`
 
-```bash
-curl -s https://rest.rewecoin.com/api/network
-```
+Chain and node status.
 
 ```json
 {
   "chain": "main",
-  "blocks": 4020,
-  "headers": 4020,
-  "bestBlockHash": "013f283e84c11922fc052aa57cb312c2d89e51d2e0753bc79478ee6016ce3c21",
-  "difficulty": 3.477303779166169,
-  "connections": 3,
-  "version": 6000050,
-  "subversion": "/ReweCoin:6.0.0/",
-  "protocolVersion": 170150
+  "blocks": 4144,
+  "headers": 4144,
+  "bestBlockHash": "05f01fd4...",
+  "difficulty": 1,
+  "connections": 4
 }
 ```
+
+`chain` must be `"main"` on mainnet. Additional node fields (version, subversion, protocol version) may be present.
 
 ### `GET /api/block/latest`
 ### `GET /api/block/{height}`
-### `GET /api/block/{hash}`
 
-```bash
-curl -s https://rest.rewecoin.com/api/block/latest
-curl -s https://rest.rewecoin.com/api/block/4000
+Block by height, or the chain tip with `latest`.
+
+```
+GET /api/block/4000
 ```
 
-Returns the block as reported by the node, without the `solution` field. Main fields (example shortened):
+Key fields: `hash`, `height`, `confirmations`, `size`, `version`, `merkleroot`, `tx` (array of txids), `time`.
 
-```json
-{
-  "hash": "0092d2f2...fc0fe9",
-  "confirmations": 1,
-  "size": 6872,
-  "height": 4019,
-  "version": 4,
-  "merkleroot": "95ab8886...d2e66",
-  "tx": ["62647f79...", "9a19f18a...", "37c4ecba..."],
-  "time": 1791650865,
-  "bits": "20022a05",
-  "difficulty": 3.696613527557834,
-  "chainwork": "000000000000000000000000000000000000000000000000000000000005bba1",
-  "chainSupply": { "monitored": true, "chainValue": 200950.0 },
-  "valuePools": [ { "id": "transparent", "chainValue": 188814.35233375 } ],
-  "previousblockhash": "0178e157...91f8"
-}
-```
+The tip has `confirmations: 1`. Do not treat a transaction as final with very few confirmations; reorganizations are possible.
 
 ### `GET /api/tx/{txid}`
 
-```bash
-curl -s https://rest.rewecoin.com/api/tx/<txid>
+Transaction as returned by the node (Zcash-style fields). Key fields: `txid`, `size`, `version`, `locktime`, `expiryheight`, `vin`, `vout`, `vjoinsplit`, `vShieldedSpend`, `vShieldedOutput`, `orchard`, `blockhash`, `height`, `confirmations`, `time`.
+
+**Known quirk:** in `vout[].scriptPubKey`, the field `addresses` is currently a string, not an array. Handle both forms in your client:
+
+```js
+const addrs = [].concat(vout.scriptPubKey.addresses || []);
 ```
 
-Returns the verbose transaction (raw hex, inputs, outputs, `confirmations` and `blockhash` once mined). The node has `txindex` enabled, so any transaction on the chain can be looked up.
+### `GET /api/address/{address}`
+
+Balance and history for a transparent address.
+
+```json
+{
+  "address": "C7WoFm8QNufcRnpcQA13FjhY4FEGcQYYskD",
+  "balance": 0,
+  "received": 0,
+  "sent": 0,
+  "txCount": 0,
+  "txids": []
+}
+```
+
+Shielded balances are not visible here.
 
 ### `GET /api/hashrate`
 
-```bash
-curl -s https://rest.rewecoin.com/api/hashrate
-```
-
-```json
-{
-  "solsPerSecond": 0.8041,
-  "nodeReportedSolsPerSecond": 0,
-  "windowBlocks": 120,
-  "avgBlockTimeSeconds": 347.4,
-  "difficulty": 3.586241569421454,
-  "note": "computed from chainwork over the last blocks, in the same units as the node's getnetworksolps but with decimals"
-}
-```
-
-The node rounds its own figure to a whole number, which reads `0` on a small network. `solsPerSecond` is computed from `chainwork` over the last `windowBlocks` blocks and keeps the decimals.
+Estimated network hashrate, computed from chainwork over the last blocks. Fields: `solsPerSecond`, `windowBlocks`, `avgBlockTimeSeconds`, `difficulty`, `note`.
 
 ### `GET /api/supply`
 
-```bash
-curl -s https://rest.rewecoin.com/api/supply
-```
+Coin supply split by pool.
 
 ```json
 {
-  "total": 201000.0,
-  "transparent": 188863.60298375,
-  "shielded": 12136.39701625,
-  "pools": [
-    { "id": "transparent", "value": 188863.60298375 },
-    { "id": "sprout", "value": 0.0 },
-    { "id": "sapling", "value": 12136.39701625 },
-    { "id": "orchard", "value": 0.0 },
-    { "id": "lockbox", "value": 0.0 }
-  ],
-  "note": "total issued supply as reported by the node; includes immature coinbase"
+  "total": 207200.0,
+  "transparent": 195004.382829,
+  "shielded": 12195.617171,
+  "pools": [{"id": "transparent", "value": 195004.382829}]
 }
 ```
 
-`total` is the issued supply reported by the node and includes immature coinbase outputs.
+### `GET /api/richlist`
 
-### `GET /api/health`
-
-```bash
-curl -s https://rest.rewecoin.com/api/health
-```
+Top transparent addresses by balance.
 
 ```json
-{ "ok": true }
+{
+  "cached": true,
+  "list": [
+    {"rank": 1, "address": "C7...", "balance": 106658.48, "percentage": 54.68}
+  ]
+}
 ```
 
-## Which API should I use?
+The list is cached and covers transparent addresses only; shielded funds are not included.
 
-| Host | Network | Source |
-|---|---|---|
-| `rest.rewecoin.com` | mainnet | Public API described on this page, backed by a ReweCoin node |
-| `mainnet-api.rewecoin.com` | mainnet | Explorer API |
-| `api.rewecoin.com` | **testnet** | Explorer API for testnet |
+## Token routes
 
-Do not use `api.rewecoin.com` for mainnet data: it serves testnet.
+`/api/token*` and `/api/tx/{txid}/token` exist for the token platform. They are not documented yet.
 
-## Not available yet
+## Not exposed publicly
 
-Rich list. It requires an address index, which the node does not have at the moment.
+Wallet and send routes (`/api/wallet`, `/api/send`) are intentionally disabled on the public API.
 
-Address balances are not served by this API. The [JavaScript SDK](sdk/) reads them from the explorer API (mainnet-api.rewecoin.com) with `getBalance`, including from browsers: its `/api/address` route sends CORS headers.
+## SDK
+
+```js
+const { ReweCoin } = require('rewecoin');
+const rwc = new ReweCoin();
+const info = await rwc.getBalance('C7WoFm8QNufcRnpcQA13FjhY4FEGcQYYskD');
+```
+
+Install with `npm i rewecoin`. See the [SDK docs](sdk/).
+
+## Examples
+
+```bash
+curl https://api.rewecoin.com/api/network
+curl https://api.rewecoin.com/api/block/latest
+curl https://api.rewecoin.com/api/address/C7WoFm8QNufcRnpcQA13FjhY4FEGcQYYskD
+```
+
+```js
+const r = await fetch('https://api.rewecoin.com/api/supply');
+console.log(await r.json());
+```
