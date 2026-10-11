@@ -2,7 +2,8 @@
  * ReweCoin JavaScript SDK
  *
  * Thin client for the public read-only REST API (https://rest.rewecoin.com).
- * No dependencies. Works in browsers and in Node.js 18+ (uses global fetch).
+ * No dependencies. Works in Node.js 18+ (uses global fetch) and in browsers,
+ * except getBalance, which is Node.js only (see below).
  *
  * Usage (browser):
  *   <script src="rewecoin.js"></script>
@@ -12,7 +13,11 @@
  * Usage (Node, CommonJS):
  *   const { ReweCoin } = require("./rewecoin.js");
  *
- * Address balances are not available: the API has no address index yet.
+ * getBalance(address) calls the explorer API (options.explorerUrl, default
+ * https://mainnet-api.rewecoin.com), not rest.rewecoin.com. That API sends no
+ * CORS headers, so browsers block the call. Use getBalance from Node.js or a
+ * backend. Amounts are converted from zatoshi (1 RWC = 100,000,000); the unit
+ * is inferred from data, not from API documentation.
  */
 (function (root, factory) {
   if (typeof module === "object" && module.exports) {
@@ -26,6 +31,8 @@
   "use strict";
 
   var DEFAULT_BASE_URL = "https://rest.rewecoin.com";
+  var DEFAULT_EXPLORER_URL = "https://mainnet-api.rewecoin.com";
+  var ZAT_PER_RWC = 100000000;
 
   function ReweCoinError(message, status, body) {
     this.name = "ReweCoinError";
@@ -40,6 +47,7 @@
   function ReweCoin(options) {
     options = options || {};
     this.baseUrl = String(options.baseUrl || DEFAULT_BASE_URL).replace(/\/+$/, "");
+    this.explorerUrl = String(options.explorerUrl || DEFAULT_EXPLORER_URL).replace(/\/+$/, "");
     this.timeoutMs = options.timeoutMs > 0 ? options.timeoutMs : 10000;
     this._fetch = options.fetch || (typeof fetch === "function" ? fetch.bind(globalThis) : null);
     if (!this._fetch) {
@@ -47,11 +55,11 @@
     }
   }
 
-  ReweCoin.prototype._get = function (path) {
+  ReweCoin.prototype._get = function (path, base) {
     var self = this;
     var controller = typeof AbortController === "function" ? new AbortController() : null;
     var timer = controller ? setTimeout(function () { controller.abort(); }, this.timeoutMs) : null;
-    var url = this.baseUrl + path;
+    var url = (base || this.baseUrl) + path;
 
     return this._fetch(url, {
       method: "GET",
@@ -106,6 +114,34 @@
   ReweCoin.prototype.getHashrate = function () { return this._get("/api/hashrate"); };
 
   ReweCoin.prototype.getSupply = function () { return this._get("/api/supply"); };
+
+  ReweCoin.prototype.getBalance = function (address, opts) {
+    var s = String(address || "").trim();
+    if (!/^[1-9A-HJ-NP-Za-km-z]{26,40}$/.test(s)) {
+      return Promise.reject(new ReweCoinError("getBalance expects a transparent ReweCoin address (base58)"));
+    }
+    var includeTxids = !!(opts && opts.includeTxids);
+    return this._get("/api/address/" + encodeURIComponent(s), this.explorerUrl).then(function (d) {
+      var fields = ["balance", "received", "sent", "txCount"];
+      for (var i = 0; i < fields.length; i++) {
+        if (!d || typeof d[fields[i]] !== "number" || !isFinite(d[fields[i]])) {
+          throw new ReweCoinError("Unexpected explorer response for address " + s, 200, d);
+        }
+      }
+      var out = {
+        address: d.address || s,
+        balance: d.balance / ZAT_PER_RWC,
+        received: d.received / ZAT_PER_RWC,
+        sent: d.sent / ZAT_PER_RWC,
+        balanceZat: d.balance,
+        receivedZat: d.received,
+        sentZat: d.sent,
+        txCount: d.txCount
+      };
+      if (includeTxids) out.txids = d.txids || [];
+      return out;
+    });
+  };
 
   ReweCoin.prototype.health = function () {
     return this._get("/api/health").then(function (d) { return !!(d && d.ok); });
