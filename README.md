@@ -98,7 +98,7 @@ Any other Equihash 200,9 miner with personalization `ZcashPoW` works with the sa
 | | |
 |---|---|
 | Scheme | PPLNS |
-| Pool fee | _X %_ <!-- fill in --> |
+| Pool fee | 1.5 % |
 | Minimum payout | 0.01 RWC |
 | Payout type | Transparent address |
 | Block maturity | _N confirmations_ <!-- fill in --> |

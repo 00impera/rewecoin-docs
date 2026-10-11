@@ -1,6 +1,6 @@
 # ReweCoin — Supply & Emission
 
-All figures on this page were verified directly against the running mainnet node (`rewecoin-cli`) and the consensus source code (`chainparams.cpp`, `consensus/params.h`) as of **October 4, 2026**, at mainnet block height 2388. None of these numbers are estimates or marketing claims.
+All figures on this page were verified directly against the running mainnet node (`rewecoin-cli`) and the consensus source code (`chainparams.cpp`, `consensus/params.h`) as of **October 11, 2026**, at mainnet block height 4118. None of these numbers are estimates or marketing claims.
 
 ## Consensus
 
@@ -18,7 +18,7 @@ All figures on this page were verified directly against the running mainnet node
 |---|---|
 | Initial block reward | 50 RWC / block |
 | Halving interval | 840,960 blocks (~2 years at target block time) |
-| Premine | **None at protocol level** — no genesis allocation, 0 RWC founders' reward, 0 to funding streams. All blocks mined to date by the project team; public mining not yet open |
+| Premine | **None at protocol level** — no genesis allocation, 0 RWC founders' reward, 0 to funding streams. All blocks mined to date were mined by the project team (team statement, not verifiable on-chain). The pool is open to external miners |
 | Founders' reward | 0 RWC (disabled) |
 | Technical safety cap (`MAX_MONEY`) | 100,000,000 RWC *(overflow guard, not the real emission target — see below)* |
 | Theoretical asymptotic total supply | **~84,095,900 RWC** |
@@ -27,19 +27,19 @@ The 100,000,000 RWC `MAX_MONEY` constant is a consensus-layer overflow safeguard
 
 ## On-chain supply verification
 
-At block 2388, the chain holds exactly:
+At block 4118, the chain holds exactly:
 
-2388 blocks × 50 RWC = 119,400 RWC
+4118 blocks × 50 RWC = 205,900 RWC
 
-This matches the node's own reported `chainValue` (119,400 RWC) exactly: no off-schedule issuance. It does not show who mined the blocks. **All blocks mined to date were mined by the project team; public mining is not yet open.**
+This matches the node's own reported `chainValue` (205,900 RWC) exactly: no off-schedule issuance. It does not show who mined the blocks. **All blocks mined to date were mined by the project team, including GPU test mining (team statement; the chain does not record who controls an address). The pool is open to external miners.**
 
-## Current status (October 4, 2026)
+## Current status (October 11, 2026)
 
 - No protocol-level premine
 - No founders' reward in the consensus rules
 - No genesis allocation
 - All blocks mined to date by the project team
-- Public mining not yet open
+- Pool open to external miners
 
 ## Emission schedule (projected, theoretical)
 
