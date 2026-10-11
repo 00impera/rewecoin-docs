@@ -4,6 +4,7 @@ Official public documentation for **ReweCoin**, a Proof-of-Work blockchain built
 
 ## Contents
 - [Public API](./api.html)
+- [JavaScript SDK](https://github.com/00impera/rewecoin-docs/tree/master/sdk)
 - [Whitepaper](./whitepaper.html)
 - [Tokenomics — Supply & Emission](./tokenomics/supply-and-emission.md)
 
