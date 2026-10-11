@@ -63,7 +63,7 @@ Notes:
 - **Separate server.** It queries the explorer, not `rest.rewecoin.com`. Change it with the `explorerUrl` option. If the explorer is down, only `getBalance` fails.
 - **Response size.** The explorer returns every transaction ID of the address, about 67 bytes each. An address with 1,088 transactions returns about 71 KB. The SDK drops `txids` unless you ask for them, but the full response is still downloaded.
 - **Units.** Zatoshi is inferred from the data (a pool address received 5,075,004,140,000, which matches 1,015 blocks of 50 RWC plus fees). The explorer API does not document it.
-- An address with no history returns `balance: 0`. Behaviour for an invalid address is not verified.
+- An address with no history returns `balance: 0`. An invalid address (bad checksum) rejects with `ReweCoinError` (`status` 404, message `Invalid address`).
 
 ## Options and errors
 
