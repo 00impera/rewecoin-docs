@@ -6,7 +6,6 @@ Official public documentation for **ReweCoin (RWC)**, an independent Proof-of-Wo
 
 ## Quick facts
 
-<!-- VERIFY: asymptotic supply. 50 RWC x 840,960 blocks x 2 = 84,096,000, not 84,093,434. -->
 
 | | |
 |---|---|
@@ -14,10 +13,10 @@ Official public documentation for **ReweCoin (RWC)**, an independent Proof-of-Wo
 | Consensus | Proof-of-Work, Equihash 200,9 |
 | Mainnet launch | September 21, 2026 |
 | Premine / founders' allocation | None at protocol level (no genesis allocation, no founders' reward). All blocks mined to date by the project team |
-| Block time | 75 seconds |
+| Target block time | 75 seconds |
 | Initial block reward | 50 RWC |
 | Halving interval | 840,960 blocks (~2 years) |
-| Asymptotic supply | ~84,093,434 RWC |
+| Asymptotic supply | ~84,095,900 RWC |
 | Mainnet address prefix | `C7` |
 
 ## Links
