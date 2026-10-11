@@ -1,0 +1,17 @@
+{
+  "name": "rewecoin",
+  "version": "0.1.0",
+  "description": "Dependency-free JavaScript client for the ReweCoin (RWC) public REST API",
+  "main": "rewecoin.js",
+  "files": ["rewecoin.js", "README.md"],
+  "engines": { "node": ">=18" },
+  "keywords": ["rewecoin", "rwc", "blockchain", "sdk", "api", "zcash"],
+  "author": "00impera",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/00impera/rewecoin-docs.git",
+    "directory": "sdk"
+  },
+  "homepage": "https://00impera.github.io/rewecoin-docs/sdk/"
+}
