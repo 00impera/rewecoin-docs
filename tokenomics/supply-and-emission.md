@@ -1,6 +1,6 @@
 # ReweCoin — Supply & Emission
 
-All figures on this page were verified directly against the running mainnet node (`rewecoin-cli`) and the consensus source code (`chainparams.cpp`, `consensus/params.h`) as of **October 11, 2026**, at mainnet block height 4118. None of these numbers are estimates or marketing claims.
+The consensus parameters on this page were verified directly against the running mainnet node (`rewecoin-cli`) and the consensus source code (`chainparams.cpp`, `consensus/params.h`) as of **October 11, 2026**, at mainnet block height 4118. The emission schedule below is calculated from those parameters, and its "year" column is a projection, not a measurement.
 
 ## Consensus
 
@@ -60,7 +60,7 @@ Real dates assume the network sustains its 75-second target block time continuou
 | Parameter | Value |
 |---|---|
 | Genesis timestamp (UTC) | 2026-09-21 09:44:27 |
-| Estimated first halving (at target block time) | ~2028-09-20 |
+| Estimated first halving (assuming the 75-second target; later at current block times) | ~2028-09-20 |
 
 ## Sources
 
