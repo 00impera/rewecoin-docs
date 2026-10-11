@@ -38,7 +38,7 @@ This matches the node's own reported `chainValue` (205,900 RWC) exactly: no off-
 - No protocol-level premine
 - No founders' reward in the consensus rules
 - No genesis allocation
-- All blocks mined to date by the project team
+- All blocks mined to date by the project team (team statement)
 - Pool open to external miners
 
 ## Emission schedule (projected, theoretical)
