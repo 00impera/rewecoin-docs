@@ -155,6 +155,21 @@ All tokens, newest first.
 
 One token, same object as in the list above. `404` if the token does not exist.
 
+#### Supply and management fields
+
+Each token object also carries the fields below. The operations behind them (`mint`, `burn`, `freeze`, `pause`) are described in [tokens.md](tokens.md).
+
+| Field | Type | Meaning |
+|---|---|---|
+| `total_supply` | string | Supply at creation, in base units (1 token = `100000000` units). Does not change. |
+| `current_supply` | string | Supply now. It differs from `total_supply` only for tokens that used `mint` or `burn`. |
+| `mintable` | boolean | The creator can issue more tokens, up to `max_supply`. |
+| `burnable` | boolean | Holders can burn their own tokens. |
+| `max_supply` | string or `null` | Supply cap of a mintable token. `null` for tokens that are not mintable. |
+| `paused` | boolean | `true` while the token is paused by its creator. |
+
+On mainnet, `mint`, `burn` and `pause` are not active yet. For now every token there has `mintable` and `burnable` set to `false`, `max_supply` set to `null`, `paused` set to `false`, and `current_supply` equal to `total_supply`.
+
 ### `GET /api/token/{token_id}/holders`
 
 Addresses with a balance above zero, largest first.
