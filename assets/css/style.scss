@@ -245,3 +245,48 @@ body {
 
 .site-footer { color: $inner; border-top-color: rgba(0,204,0,0.45); }
 .site-footer a { color: $glow; }
+
+/* ---------- circuits, dividers, page-frame ---------- */
+.page-header {
+  background-image: url('{{ "/assets/img/circuit-board.svg" | relative_url }}'), radial-gradient(ellipse at 50% 50%, #000000 0%, #050A0E 30%, #004400 78%, #003300 100%);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.main-content h2 {
+  padding-top: 46px;
+  background-image: url('{{ "/assets/img/divider.svg" | relative_url }}');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+body:before {
+  content: "";
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-image: url('{{ "/assets/img/circuit-board.svg" | relative_url }}');
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: .07;
+  pointer-events: none;
+  z-index: -1;
+}
+body:after {
+  content: "";
+  position: fixed;
+  top: 8px; right: 8px; bottom: 8px; left: 8px;
+  border: 1px solid rgba(57,255,20,.45);
+  box-shadow: 0 0 12px rgba(57,255,20,.25), inset 0 0 12px rgba(57,255,20,.10);
+  background-image: linear-gradient(#FFD700,#FFD700), linear-gradient(#FFD700,#FFD700), linear-gradient(#FFD700,#FFD700), linear-gradient(#FFD700,#FFD700), linear-gradient(#FFD700,#FFD700), linear-gradient(#FFD700,#FFD700), linear-gradient(#FFD700,#FFD700), linear-gradient(#FFD700,#FFD700);
+  background-repeat: no-repeat;
+  background-size: 20px 2px, 2px 20px, 20px 2px, 2px 20px, 20px 2px, 2px 20px, 20px 2px, 2px 20px;
+  background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
+  background-origin: border-box;
+  pointer-events: none;
+  z-index: 50;
+}
+@media (max-width: 600px) {
+  body:before { display: none; }
+  body:after { top: 4px; right: 4px; bottom: 4px; left: 4px; }
+}
