@@ -28,7 +28,7 @@ Official public documentation for **ReweCoin (RWC)**, an independent Proof-of-Wo
 [![Faucet](https://img.shields.io/badge/Faucet-Get_test_coins-00eaff?style=for-the-badge&labelColor=050A0E)](https://wallet.rewecoin.com/receive.html)
 
 [![X](https://img.shields.io/badge/X-@ionelxxx1-00eaff?style=for-the-badge&labelColor=050A0E&logo=x&logoColor=00eaff)](https://x.com/ionelxxx1)
-[![Discord](https://img.shields.io/badge/Discord-Join-00eaff?style=for-the-badge&labelColor=050A0E&logo=discord&logoColor=00eaff)](https://discord.gg/pVDyKAqeF)
+[![Discord](https://img.shields.io/badge/Discord-Join-00eaff?style=for-the-badge&labelColor=050A0E&logo=discord&logoColor=00eaff)](https://discord.gg/vYwkTqYxp)
 [![Telegram](https://img.shields.io/badge/Telegram-ReweCoin_bot-00eaff?style=for-the-badge&labelColor=050A0E&logo=telegram&logoColor=00eaff)](https://t.me/ReweCoin_bot)
 [![GitHub](https://img.shields.io/badge/GitHub-00impera-00eaff?style=for-the-badge&labelColor=050A0E&logo=github&logoColor=00eaff)](https://github.com/00impera)
 
@@ -121,7 +121,7 @@ Payouts are sent in cycles. On a young chain with few blocks, a payout can wait 
 | Unauthorized worker | The address must be a valid transparent RWC address starting with `C7` |
 | No payout yet | You need at least 0.01 RWC, and the pool may be waiting on confirmations |
 
-Still stuck? Ask on [Discord](https://discord.gg/pVDyKAqeF).
+Still stuck? Ask on [Discord](https://discord.gg/vYwkTqYxp).
 
 ## Connecting to the network
 
