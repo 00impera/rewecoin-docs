@@ -304,3 +304,25 @@ section.card h2{margin-top:0;padding-top:0}.main-content{background:#000000!impo
 .page-header *,.project-name{color:#FFFFFF!important}
 .project-tagline{color:#EAF8FF!important}
 .site-footer,.site-footer a{color:#EAF8FF!important}
+
+/*docs-v3*/
+html,body{background:#000000!important}
+.main-content{background:#000000!important;color:#F8F2E8!important}
+.main-content p,.main-content li,.main-content td,.main-content th,.main-content strong{color:#F8F2E8!important}
+.main-content h1,.main-content h2,.main-content h3,.main-content h4{color:#F8F2E8!important;text-shadow:none!important}
+.main-content h2{border-left:3px solid #8FD3FF!important;padding-left:12px!important}
+.main-content table{background:#050A0E!important;border:1px solid #2B2B2B!important}
+.main-content table th{background:#111111!important;border-color:#2B2B2B!important}
+.main-content table td{background:#050A0E!important;border-color:#2B2B2B!important}
+.main-content blockquote{background:#050A0E!important;border-left:3px solid #8FD3FF!important;color:#F8F2E8!important}
+.main-content a{color:#8FD3FF!important}
+.main-content a:hover{color:#00EAFF!important}
+.main-content code,.main-content pre{font-family:"Share Tech Mono",ui-monospace,monospace!important;color:#8FD3FF!important;background:#111111!important;border:1px solid #2B2B2B!important;box-shadow:none!important}
+.page-header{background:#050A0E!important;background-image:none!important;border-bottom:1px solid #2B2B2B!important;box-shadow:none!important}
+.project-name{color:#F8F2E8!important;text-shadow:none!important}
+.project-name:before{content:"";display:inline-block;width:48px;height:48px;margin-right:14px;vertical-align:middle;border-radius:50%;background:url("../img/rewecoin-coin.png") center/cover no-repeat}
+.project-tagline{color:#F8F2E8!important;text-shadow:none!important}
+.btn{background:#050A0E!important;color:#8FD3FF!important;border:1px solid #2B2B2B!important;box-shadow:none!important;text-shadow:none!important}
+.btn:hover{color:#00EAFF!important;border-color:#8FD3FF!important}
+.site-footer{background:#050A0E!important;border-top:1px solid #2B2B2B!important;color:#F8F2E8!important}
+.site-footer a{color:#8FD3FF!important}
