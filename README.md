@@ -149,7 +149,7 @@ For a read-only HTTP interface (blocks, transactions, supply, hashrate), see the
 
 | Path | Description |
 |---|---|
-| `whitepaper.html` | Whitepaper (current draft, v0.2) |
+| `whitepaper.html` | Whitepaper (v1.0) |
 | `index.md` | Documentation home page |
 | `tokenomics/` | Supply and emission details |
 | `assets/` | Images and static files |
@@ -157,7 +157,7 @@ For a read-only HTTP interface (blocks, transactions, supply, hashrate), see the
 
 ## Status
 
-This documentation is a draft. Sections marked **TBD** in the whitepaper (motivation, utility) are intentionally left open and contain no invented figures. The whitepaper is revised as the project reaches each roadmap milestone.
+Parameters in the whitepaper are verified from the mainnet node. Plans in the Utility section are directions, not commitments. The whitepaper is revised as the project reaches each roadmap milestone.
 
 ## Contributing
 

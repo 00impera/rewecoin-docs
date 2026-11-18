@@ -28,21 +28,20 @@ body:before{content:"";position:fixed;inset:0;background:url(assets/img/circuit-
 /* page-frame */
 body:after{content:"";position:fixed;inset:8px;border:1px solid rgba(57,255,20,.45);box-shadow:0 0 12px rgba(57,255,20,.25),inset 0 0 12px rgba(57,255,20,.10);background-image:linear-gradient(#FFD700,#FFD700),linear-gradient(#FFD700,#FFD700),linear-gradient(#FFD700,#FFD700),linear-gradient(#FFD700,#FFD700),linear-gradient(#FFD700,#FFD700),linear-gradient(#FFD700,#FFD700),linear-gradient(#FFD700,#FFD700),linear-gradient(#FFD700,#FFD700);background-repeat:no-repeat;background-size:20px 2px,2px 20px,20px 2px,2px 20px,20px 2px,2px 20px,20px 2px,2px 20px;background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%;background-origin:border-box;pointer-events:none;z-index:50}
 @media(max-width:600px){body:before{display:none}body:after{inset:4px}}</style></head><body>
-<p class="dim">PS C:\rewecoin&gt; <span class="ok">type</span> whitepaper.md</p>
 <h1>ReweCoin (RWC) — Whitepaper</h1>
 <img class="hero-circuit" src="assets/img/circuit-board.svg" alt="" aria-hidden="true">
-<p class="dim">Version 0.2 — Draft, October 2026</p>
+<p class="dim">Version 1.0, November 2026</p>
 <p><a href="https://wallet.rewecoin.com/">[Launch Wallet]</a> <a href="https://explorer.rewecoin.com/">[Open Explorer]</a> <a href="https://00impera.github.io/rewecoin-docs/whitepaper.html">[Whitepaper]</a> <a href="https://00impera.github.io/rewecoin-docs/">[Docs]</a></p>
-<blockquote>Parameters are verified from the ReweCoin mainnet node and its consensus source. Sections marked <b>TBD</b> are open for the team to finalize; no invented figures.</blockquote>
+<blockquote>Parameters are verified from the ReweCoin mainnet node and its consensus source. Plans in the Utility section are directions, not commitments.</blockquote>
 
 <img class="divider" src="assets/img/divider.svg" alt="" aria-hidden="true" loading="lazy">
 <h2>1. What is ReweCoin?</h2>
-<p>ReweCoin (<b>RWC</b>) is an independent Proof-of-Work blockchain built on the Zcash codebase (zcashd 6.0.0). Mainnet launched on <b>September 21, 2026</b> with no protocol-level premine, no founders' reward in the consensus rules and no genesis allocation. All blocks mined to date (height 2388, October 4, 2026) were mined by the project team; public mining is not yet open.</p>
+<p>ReweCoin (<b>RWC</b>) is an independent Proof-of-Work blockchain built on the Zcash codebase (zcashd 6.0.0). Mainnet launched on <b>September 21, 2026</b> with no protocol-level premine, no founders' reward in the consensus rules and no genesis allocation. Public mining is open through the ReweCoin pool at pool.rewecoin.com.</p>
 <p>It inherits Zcash's transaction model (transparent and shielded pools, UTXO ledger) and Equihash consensus, as a fully separate chain with its own genesis, emission schedule and parameters.</p>
 
 <img class="divider" src="assets/img/divider.svg" alt="" aria-hidden="true" loading="lazy">
 <h2>2. Why does it exist?</h2>
-<p><b>TBD</b> — the project's motivation in the founder's own words: what gap it fills and how it differs from using Zcash or another chain.</p>
+<p>ReweCoin was created to build an independent blockchain ecosystem focused on real utility, digital assets and accessible Web3 services. The goal is a single platform that brings together wallets, NFTs, wrapped assets and decentralized applications, without depending entirely on other blockchain networks.</p>
 
 <img class="divider" src="assets/img/divider.svg" alt="" aria-hidden="true" loading="lazy">
 <h2>3. How does it work?</h2>
@@ -70,13 +69,14 @@ body:after{content:"";position:fixed;inset:8px;border:1px solid rgba(57,255,20,.
 
 <img class="divider" src="assets/img/divider.svg" alt="" aria-hidden="true" loading="lazy">
 <h2>4. What utility does it have?</h2>
-<p><b>TBD</b> — today RWC is base-layer infrastructure (send, receive, mine, explore). Directions under consideration, to be listed only with a concrete plan:</p>
-<ul><li>Payment rail for goods/services</li><li>Membership / access-gating token</li><li>Marketplace settlement currency</li><li>Staking or reward mechanisms (needs protocol-level design; chain is pure PoW)</li></ul>
+<p>Today RWC is base-layer infrastructure: send, receive, mine and explore on the public ledger, with a web wallet, a block explorer and a bridge to Monad. Wrapped ReweCoin (wRWC) extends RWC to the Monad ecosystem through a 1:1 bridge. Swap is an asset-exchange function used for interoperability between components of the ReweCoin ecosystem. It is not an independent decentralized exchange, and no additional features are announced beyond those officially published.</p>
+<p>Directions for the ecosystem, which are plans and not commitments:</p>
+<ul><li>Vaults</li><li>NFT Packs and trading cards</li><li>wRWC integration in ReweCoin applications</li><li>Integration with DeFi services and Monad-compatible platforms, being evaluated as the ecosystem develops</li></ul>
 
 <img class="divider" src="assets/img/divider.svg" alt="" aria-hidden="true" loading="lazy">
 <h2>5. Supply and emission</h2>
 <p>Detail: <a href="https://00impera.github.io/rewecoin-docs/tokenomics/supply-and-emission.html">tokenomics/supply-and-emission</a></p>
-<ul><li>Initial block reward: <code>50 RWC</code></li><li>Halving interval: <code>840,960</code> blocks (~2 years)</li><li>Premine: none at protocol level (no genesis allocation, no founders' reward). All blocks mined to date by the project team; public mining not yet open</li><li>Asymptotic supply: ~84,093,434 RWC</li><li>Technical overflow cap: 100,000,000 RWC (not the target)</li></ul>
+<ul><li>Initial block reward: <code>50 RWC</code></li><li>Halving interval: <code>840,960</code> blocks (~2 years)</li><li>Premine: none at protocol level (no genesis allocation, no founders' reward). Public mining is open through the ReweCoin pool at pool.rewecoin.com.</li><li>Asymptotic supply: ~84,093,434 RWC</li><li>Technical overflow cap: 100,000,000 RWC (not the target)</li></ul>
 
 <img class="divider" src="assets/img/divider.svg" alt="" aria-hidden="true" loading="lazy">
 <h2>6. Roadmap</h2>
@@ -96,7 +96,7 @@ body:after{content:"";position:fixed;inset:8px;border:1px solid rgba(57,255,20,.
 <li>Emission projections assume the target block time; real timelines vary with hashrate.</li>
 <li>Not financial advice. RWC should not be treated as an investment absent a documented utility case.</li></ul>
 
-<footer><p><a class="logo" href="https://rewecoin.com/"><img src="https://rewecoin.com/assets/img/logo-wordmark.png" alt="ReweCoin" style="max-width:220px;height:auto;display:block"></a></p><p class="dim">PS C:\rewecoin&gt; <span class="ok">Get-Links</span></p>
+<footer><p><a class="logo" href="https://rewecoin.com/"><img src="https://rewecoin.com/assets/img/logo-wordmark.png" alt="ReweCoin" style="max-width:220px;height:auto;display:block"></a></p>
 <a href="https://x.com/ionelxxx1" aria-label="X" style="margin:0 6px"><img src="assets/icons/x.svg" alt="X" width="28" height="28" style="vertical-align:middle"></a><a href="https://discord.gg/ne6fQyEcFZ" aria-label="Discord" style="margin:0 6px"><img src="assets/icons/discord.svg" alt="Discord" width="28" height="28" style="vertical-align:middle"></a><a href="https://t.me/ReweCoin_bot" aria-label="Telegram" style="margin:0 6px"><img src="assets/icons/telegram.svg" alt="Telegram" width="28" height="28" style="vertical-align:middle"></a><a href="https://github.com/00impera" aria-label="GitHub" style="margin:0 6px"><img src="assets/icons/github.svg" alt="GitHub" width="28" height="28" style="vertical-align:middle"></a>
 <p class="dim">© 2026 ReweCoin · <a href="https://rewecoin.com/">rewecoin.com</a></p></footer>
 </body></html>
