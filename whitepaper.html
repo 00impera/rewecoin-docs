@@ -107,14 +107,14 @@ footer.docs-footer p{margin:0!important;color:#9AA7B2!important}</style><link re
 <tr><td>Web wallet</td><td class="ok">Live</td><td><a href="https://wallet.rewecoin.com">wallet.rewecoin.com</a></td></tr>
 <tr><td>Faucet</td><td class="ok">Live</td><td><a href="https://wallet.rewecoin.com/receive.html">via wallet</a></td></tr>
 <tr><td>Solo mining</td><td class="ok">Live</td><td>Equihash 200,9 miners</td></tr>
-<tr><td>Mining pool (stratum)</td><td class="wip">Testing</td><td>Internal testnet tests; not public yet</td></tr></table>
+<tr><td>Mining pool (stratum)</td><td class="ok">Live</td><td>pool.rewecoin.com, stratum ports 3092 and 3093</td></tr></table>
 
-<h3><span class="num">3.4</span> Mining pool (in testing)</h3>
+<h3><span class="num">3.4</span> Mining pool</h3>
 <ul><li>Stratum server for Equihash 200,9, including NU5 block templates.</li>
 <li>Local Equihash verification of every solution before it reaches the node.</li>
 <li>Payout address required: miners connect as <code>-u ADDRESS.worker</code>; the address is validated by the node.</li>
 <li>Found blocks are journaled; payouts wait for coinbase maturity (101 blocks), skip orphans, and are idempotent.</li>
-<li>Not yet implemented: variable difficulty (vardiff), PPLNS share accounting, TLS.</li></ul>
+<li>Payout scheme: PPLNS, 1.5% pool fee, minimum payout 0.01 RWC. Port 3092 uses variable difficulty (vardiff), port 3093 uses fixed difficulty. TLS is not available yet.</li></ul>
 
 </section><section class="card"><h2><span class="num">4.</span> What utility does it have?</h2>
 <p>Today RWC is base-layer infrastructure: send, receive, mine and explore on the public ledger, with a web wallet, a block explorer and a bridge to Monad. Wrapped ReweCoin (wRWC) extends RWC to the Monad ecosystem through a 1:1 bridge. A ReweCoin DEX interface is published at wallet.rewecoin.com/dex.html. No liquidity pools are active yet, and liquidity features are under development.</p>
@@ -129,8 +129,8 @@ footer.docs-footer p{margin:0!important;color:#9AA7B2!important}</style><link re
 <ul>
 <li class="ok">[x] Mainnet + testnet live</li><li class="ok">[x] Block explorer</li><li class="ok">[x] Web wallet</li><li class="ok">[x] Faucet</li>
 <li class="ok">[x] Public whitepaper (this document)</li><li class="ok">[x] Landing page (<a href="https://rewecoin.com/">rewecoin.com</a>)</li><li class="ok">[x] Community channels (Telegram, Discord, X)</li>
-<li class="wip">[~] Mining pool: Equihash verification, address validation and payouts built; testnet runs ongoing</li>
-<li>[ ] Pool on mainnet (vardiff, PPLNS, TLS, firewall)</li>
+<li class="ok">[x] Mining pool: public at pool.rewecoin.com (PPLNS, vardiff on port 3092)</li>
+<li>[ ] Pool TLS (stratum over SSL)</li>
 <li>[ ] End-to-end public test: faucet → wallet A → send → wallet B → explorer</li>
 <li>[ ] Defined utility layer (Section 4)</li>
 <li>[ ] Exchange listing / swap (may carry money-transmission / KYC-AML implications; get legal review first)</li>
