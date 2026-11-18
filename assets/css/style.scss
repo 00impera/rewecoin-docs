@@ -334,3 +334,11 @@ body,.page-header,.btn,.main-content,.main-content h1,.main-content h2,.main-con
 .main-content footer.docs-footer{margin:56px 0 0;padding:20px 0 0;border-top:1px solid #2B2B2B;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.9rem}
 .main-content footer.docs-footer nav{display:flex;gap:20px;flex-wrap:wrap}
 .main-content footer.docs-footer p{margin:0;color:#9AA7B2!important}
+
+/*docs-v5*/
+.main-content .docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0 0}
+.main-content .docs-card{background:#050A0E;border:1px solid #2B2B2B;border-radius:12px;padding:24px 28px;box-shadow:none}
+.main-content .docs-card h2{margin:0 0 14px!important;font-size:1.2rem!important}
+.main-content .docs-card ul{margin:0;padding-left:1.2em}
+.main-content .docs-card li{margin:8px 0}
+@media (max-width:700px){.main-content .docs-grid{grid-template-columns:1fr}}
