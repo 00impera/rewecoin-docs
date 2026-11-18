@@ -20,7 +20,7 @@ Read-only REST API returning JSON. No API key required.
 
 ## Endpoints
 
-### `GET /api/health`
+### <span class="m-get">GET</span> `/api/health`
 
 Liveness check.
 
@@ -28,7 +28,7 @@ Liveness check.
 {"ok": true}
 ```
 
-### `GET /api/network`
+### <span class="m-get">GET</span> `/api/network`
 
 Chain and node status.
 
@@ -45,8 +45,8 @@ Chain and node status.
 
 `chain` must be `"main"` on mainnet. Additional node fields (version, subversion, protocol version) may be present.
 
-### `GET /api/block/latest`
-### `GET /api/block/{height}`
+### <span class="m-get">GET</span> `/api/block/latest`
+### <span class="m-get">GET</span> `/api/block/{height}`
 
 Block by height, or the chain tip with `latest`.
 
@@ -58,11 +58,11 @@ Key fields: `hash`, `height`, `confirmations`, `size`, `version`, `merkleroot`, 
 
 The tip has `confirmations: 1`. Do not treat a transaction as final with very few confirmations; reorganizations are possible.
 
-### `GET /api/tx/{txid}`
+### <span class="m-get">GET</span> `/api/tx/{txid}`
 
 Transaction as returned by the node (Zcash-style fields). Key fields: `txid`, `size`, `version`, `locktime`, `expiryheight`, `vin`, `vout`, `vjoinsplit`, `vShieldedSpend`, `vShieldedOutput`, `orchard`, `blockhash`, `height`, `confirmations`, `time`.
 
-### `GET /api/address/{address}`
+### <span class="m-get">GET</span> `/api/address/{address}`
 
 Balance and history for a transparent address.
 
@@ -79,11 +79,11 @@ Balance and history for a transparent address.
 
 Shielded balances are not visible here.
 
-### `GET /api/hashrate`
+### <span class="m-get">GET</span> `/api/hashrate`
 
 Estimated network hashrate, computed from chainwork over the last blocks. Fields: `solsPerSecond`, `windowBlocks`, `avgBlockTimeSeconds`, `difficulty`, `note`.
 
-### `GET /api/supply`
+### <span class="m-get">GET</span> `/api/supply`
 
 Coin supply split by pool.
 
@@ -96,7 +96,7 @@ Coin supply split by pool.
 }
 ```
 
-### `GET /api/richlist`
+### <span class="m-get">GET</span> `/api/richlist`
 
 Top transparent addresses by balance.
 
@@ -119,7 +119,7 @@ Read-only routes for tokens created on the ReweCoin token layer.
 - Amounts (`total_supply`, `balance`, `amount`) are **strings** in the smallest unit. Divide by `10^decimals` to get the display value.
 - Errors are JSON, for example `{"error": "token inexistent"}` with status `404` (the message text is in Romanian).
 
-### `GET /api/tokens`
+### <span class="m-get">GET</span> `/api/tokens`
 
 All tokens, newest first.
 
@@ -151,7 +151,7 @@ All tokens, newest first.
 
 `is_verified` can be `null`. Logo fields (`logo_status`, `logo_reject_reason`, `logo_uploaded_at`) and `receive_address` are also present and may be `null`.
 
-### `GET /api/token/{token_id}`
+### <span class="m-get">GET</span> `/api/token/{token_id}`
 
 One token, same object as in the list above. `404` if the token does not exist.
 
@@ -170,7 +170,7 @@ Each token object also carries the fields below. The operations behind them (`mi
 
 On mainnet, `mint`, `burn` and `pause` are not active yet. For now every token there has `mintable` and `burnable` set to `false`, `max_supply` set to `null`, `paused` set to `false`, and `current_supply` equal to `total_supply`.
 
-### `GET /api/token/{token_id}/holders`
+### <span class="m-get">GET</span> `/api/token/{token_id}/holders`
 
 Addresses with a balance above zero, largest first.
 
@@ -182,7 +182,7 @@ Addresses with a balance above zero, largest first.
 }
 ```
 
-### `GET /api/token/{token_id}/transfers`
+### <span class="m-get">GET</span> `/api/token/{token_id}/transfers`
 
 Transfers of this token, newest block first.
 
@@ -196,7 +196,7 @@ Transfers of this token, newest block first.
 
 Each transfer has `txid`, `block_height`, `status`, `error_message`, `from`, `to`, `amount` and `executed_at`. `from` may be `null` when the sender is not made public.
 
-### `GET /api/token/{token_id}/balance/{address}`
+### <span class="m-get">GET</span> `/api/token/{token_id}/balance/{address}`
 
 ```json
 {"token_id": "tok_a7d6f80f8a34", "address": "rwu1...", "balance": "0"}
@@ -204,7 +204,7 @@ Each transfer has `txid`, `block_height`, `status`, `error_message`, `from`, `to
 
 An address with no balance returns `"0"`, not an error.
 
-### `GET /api/tx/{txid}/token`
+### <span class="m-get">GET</span> `/api/tx/{txid}/token`
 
 Tells you whether a transaction is a token deploy or transfer.
 
