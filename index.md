@@ -16,11 +16,4 @@ Official public documentation for **ReweCoin**, a Proof-of-Work blockchain built
 - [Testnet](https://testnet.rewecoin.com)
 - [Faucet (testnet)](https://wallet.rewecoin.com/receive.html)
 
-## Community
-
-<p class="social">
-<a href="https://x.com/ionelxxx1" aria-label="X"><img src="assets/icons/x.svg" alt="X"></a>
-<a href="https://discord.gg/ne6fQyEcFZ" aria-label="Discord"><img src="assets/icons/discord.svg" alt="Discord"></a>
-<a href="https://t.me/ReweCoin_bot" aria-label="Telegram"><img src="assets/icons/telegram.svg" alt="Telegram"></a>
-<a href="https://github.com/00impera" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
-</p>
+<footer class="docs-footer"><nav><a href="https://rewecoin.com/">Website</a><a href="https://github.com/00impera">GitHub</a><a href="https://discord.gg/ne6fQyEcFZ">Discord</a><a href="https://t.me/ReweCoin_bot">Telegram</a><a href="https://x.com/ionelxxx1">X</a></nav><p>&copy; 2026 ReweCoin</p></footer>
