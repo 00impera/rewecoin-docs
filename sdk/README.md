@@ -23,6 +23,9 @@ const rwc = new ReweCoin();
 
   const bal = await rwc.getBalance("C7TuJsfkLhAD3kh2rSmVdZBonBVmTFC2Z9Z");
   console.log(bal.balance, bal.txCount);
+
+  const { count, tokens } = await rwc.getTokens();
+  console.log(count, tokens[0].symbol, tokens[0].token_id);
 })();
 ```
 
@@ -39,6 +42,12 @@ In a browser, load the file with `<script src="rewecoin.js"></script>` and use `
 | `getSupply()` | `/api/supply` | Issued supply and pool breakdown |
 | `getRichList()` | `/api/richlist` | Top addresses by balance (transparent only). Cached about 5 minutes; an uncached call can take about 15 s, so it uses a 30 s timeout |
 | `getBalance(address, opts)` | explorer `/api/address/{address}` | Balance, received, sent, transaction count |
+| `getTokens()` | `/api/tokens` | All tokens (`count`, `tokens[]`), newest first |
+| `getToken(tokenId)` | `/api/token/{token_id}` | One token, for example `"tok_b0749135a397"` |
+| `getTokenHolders(tokenId)` | `/api/token/{token_id}/holders` | Addresses with a balance, largest first |
+| `getTokenTransfers(tokenId)` | `/api/token/{token_id}/transfers` | Transfers, newest block first |
+| `getTokenBalance(tokenId, address)` | `/api/token/{token_id}/balance/{address}` | Balance in base units (string; 1 token = 100,000,000) |
+| `getTxToken(txid)` | `/api/tx/{txid}/token` | Whether a transaction is a token deploy or transfer |
 | `health()` | `/api/health` | `true` if the API is up |
 
 ## getBalance

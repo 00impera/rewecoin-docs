@@ -144,6 +144,45 @@
     });
   };
 
+  // ---- ReweCoin tokens (79 WRWC.* tokens and others), see api.md "Tokens"
+  function tokId(id) {
+    var s = String(id || "").trim();
+    if (!/^tok_[0-9a-f]{6,40}$/.test(s)) throw new ReweCoinError("token_id must look like tok_xxxxxxxxxxxx");
+    return encodeURIComponent(s);
+  }
+  function wrap(fn) { try { return fn(); } catch (e) { return Promise.reject(e); } }
+
+  ReweCoin.prototype.getTokens = function () { return this._get("/api/tokens"); };
+
+  ReweCoin.prototype.getToken = function (tokenId) {
+    var self = this; return wrap(function () { return self._get("/api/token/" + tokId(tokenId)); });
+  };
+
+  ReweCoin.prototype.getTokenHolders = function (tokenId) {
+    var self = this; return wrap(function () { return self._get("/api/token/" + tokId(tokenId) + "/holders"); });
+  };
+
+  ReweCoin.prototype.getTokenTransfers = function (tokenId) {
+    var self = this; return wrap(function () { return self._get("/api/token/" + tokId(tokenId) + "/transfers"); });
+  };
+
+  ReweCoin.prototype.getTokenBalance = function (tokenId, address) {
+    var self = this;
+    return wrap(function () {
+      var a = String(address || "").trim();
+      if (!/^[0-9A-Za-z]{20,100}$/.test(a)) throw new ReweCoinError("getTokenBalance expects a ReweCoin address");
+      return self._get("/api/token/" + tokId(tokenId) + "/balance/" + encodeURIComponent(a));
+    });
+  };
+
+  ReweCoin.prototype.getTxToken = function (txid) {
+    var s = String(txid || "").trim();
+    if (!/^[0-9a-fA-F]{64}$/.test(s)) {
+      return Promise.reject(new ReweCoinError("getTxToken expects a 64-character transaction ID"));
+    }
+    return this._get("/api/tx/" + encodeURIComponent(s) + "/token");
+  };
+
   ReweCoin.prototype.health = function () {
     return this._get("/api/health").then(function (d) { return !!(d && d.ok); });
   };
