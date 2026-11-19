@@ -82,9 +82,9 @@ footer.docs-footer nav{display:flex;gap:20px;flex-wrap:wrap}
 footer.docs-footer a{margin:0!important}
 footer.docs-footer p{margin:0!important;color:#9AA7B2!important}</style><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"></head><body>
 <h1><img class="wp-logo" src="assets/img/rewecoin-coin.png" alt="ReweCoin" width="56" height="56"><span>ReweCoin (RWC) — Whitepaper</span></h1>
-<p class="dim">Version 1.0, November 2026</p>
-<p><a href="https://wallet.rewecoin.com/">[Launch Wallet]</a> <a href="https://explorer.rewecoin.com/">[Open Explorer]</a> <a href="https://00impera.github.io/rewecoin-docs/whitepaper.html">[Whitepaper]</a> <a href="https://00impera.github.io/rewecoin-docs/">[Docs]</a></p>
-<blockquote>Parameters are verified from the ReweCoin mainnet node and its consensus source. Plans in the Utility section are directions, not commitments.</blockquote>
+<p class="dim">Version 1.1, 19 November 2026 (v1.0: November 2026)</p>
+<p><a href="https://wallet.rewecoin.com/">[Launch Wallet]</a> <a href="https://explorer.rewecoin.com/">[Open Explorer]</a> <a href="https://00impera.github.io/rewecoin-docs/whitepaper.html">[Whitepaper]</a> <a href="https://00impera.github.io/rewecoin-docs/">[Docs]</a> <a href="https://wallet.rewecoin.com/wrwc.html">[wRWC]</a></p>
+<blockquote>Parameters are verified from the ReweCoin mainnet node and its consensus source. Contract addresses are on Monad mainnet (chain ID 143) and their source code is verified on MonadScan and MonadVision. Items under “Next” in the roadmap are plans, not commitments.</blockquote>
 
 <section class="card"><h2><span class="num">1.</span> What is ReweCoin?</h2>
 <p>ReweCoin (<b>RWC</b>) is an independent Proof-of-Work blockchain built on the Zcash codebase (zcashd 6.0.0). Mainnet launched on <b>September 21, 2026</b> with no protocol-level premine, no founders' reward in the consensus rules and no genesis allocation. Public mining is open through the ReweCoin pool at pool.rewecoin.com.</p>
@@ -117,9 +117,27 @@ footer.docs-footer p{margin:0!important;color:#9AA7B2!important}</style><link re
 <li>Payout scheme: PPLNS, 1.5% pool fee, minimum payout 0.01 RWC. Port 3092 uses variable difficulty (vardiff), port 3093 uses fixed difficulty. TLS is not available yet.</li></ul>
 
 </section><section class="card"><h2><span class="num">4.</span> What utility does it have?</h2>
-<p>Today RWC is base-layer infrastructure: send, receive, mine and explore on the public ledger, with a web wallet, a block explorer and a bridge to Monad. Wrapped ReweCoin (wRWC) extends RWC to the Monad ecosystem through a 1:1 bridge. A ReweCoin DEX interface is published at wallet.rewecoin.com/dex.html. No liquidity pools are active yet, and liquidity features are under development.</p>
-<p>Directions for the ecosystem, which are plans and not commitments:</p>
-<ul><li>Vaults</li><li>NFT Packs and trading cards</li><li>wRWC integration in ReweCoin applications</li><li>Integration with DeFi services and Monad-compatible platforms, being evaluated as the ecosystem develops</li></ul>
+<p>RWC is base-layer infrastructure: send, receive, mine and explore on the public ledger with the web wallet and the block explorer. Since November 2026 the ecosystem also runs on Monad, through Wrapped ReweCoin and the applications built on it.</p>
+<h3><span class="num">4.1</span> Bridge and Wrapped ReweCoin (wRWC)</h3>
+<ul><li>wRWC is an ERC-20 token on Monad (8 decimals, same units as RWC). It is minted 1:1 only when RWC is locked in the ReweCoin bridge, one mint per lock, and burned when redeemed for RWC.</li>
+<li>Supply cap <code>100,000 wRWC</code>, daily mint limit <code>10,000 wRWC</code>. Minting and redemption can be paused in an emergency; transfers are never blocked.</li>
+<li>The bridge is custodial and operated by DREAMAI. A live proof of reserve (RWC locked vs wRWC in circulation) is published on the <a href="https://wallet.rewecoin.com/wrwc.html#reserve">wRWC page</a>.</li></ul>
+<h3><span class="num">4.2</span> Swap</h3>
+<p>Automated liquidity pools on Monad: wRWC/USDC, wRWC/USDT0, and wRWC against the WRWC.* ecosystem tokens. The swap is built into the wallet.</p>
+<h3><span class="num">4.3</span> Vault NFTs</h3>
+<p>Six vaults (Silver, Gold, Platinum, Elite, Master, Legendary) lock wRWC for a fixed period. Each position is a transferable NFT; whoever holds it can withdraw. Rewards come from a funded reserve; early exit costs a 10% penalty.</p>
+<h3><span class="num">4.4</span> WRWC.* ecosystem tokens</h3>
+<p>Tokens of the ReweCoin network are brought to Monad as WRWC.* tokens, each backed by the token of the same name locked on the ReweCoin chain.</p>
+<h3><span class="num">4.5</span> Rip Packs</h3>
+<p>Limited-edition NFT packs on Monad in six levels (caps 1000/600/400/200/100/25). Each pack is a numbered NFT whose opening draws a prize in WRWC.* tokens with odds fixed in the contract, using a commit-reveal draw. The prize stock is deposited in the contract before sale. Packs can be traded on a built-in marketplace, swapped 1:1, and fused (three opened packs into one sealed pack of the next level). Payment in USDC, by card, PayPal or crypto.</p>
+<h3><span class="num">4.6</span> Contract addresses (Monad mainnet)</h3>
+<table><tr><th>Contract</th><th>Address</th></tr>
+<tr><td>wRWC token</td><td><a href="https://monadscan.com/token/0x8a0a8441612B7614C2582e45974B10775B0630Ec"><code>0x8a0a8441612B7614C2582e45974B10775B0630Ec</code></a></td></tr>
+<tr><td>Pool wRWC/USDC</td><td><code>0x74eDFeC3805f40b90E0A33AC5F567089C428E8ED</code></td></tr>
+<tr><td>Pool wRWC/USDT0</td><td><code>0x940D078f7F9dd11305804E9d9BFc0d4DF676A9FA</code></td></tr>
+<tr><td>Rip Packs NFT</td><td><a href="https://monadscan.com/address/0xf510080c409fAe65877ee4B2837361110D11feaa"><code>0xf510080c409fAe65877ee4B2837361110D11feaa</code></a></td></tr>
+<tr><td>Rip Packs Sale</td><td><a href="https://monadscan.com/address/0x8aDc294c8333e66995d5f195960d70Dc3C653C6c"><code>0x8aDc294c8333e66995d5f195960d70Dc3C653C6c</code></a></td></tr>
+<tr><td>Rip Packs Market</td><td><a href="https://monadscan.com/address/0x5e8233362D9d15916ee24dD3c92A2E759Af1F4F0"><code>0x5e8233362D9d15916ee24dD3c92A2E759Af1F4F0</code></a></td></tr></table>
 
 </section><section class="card"><h2><span class="num">5.</span> Supply and emission</h2>
 <p>Detail: <a href="https://00impera.github.io/rewecoin-docs/tokenomics/supply-and-emission.html">tokenomics/supply-and-emission</a></p>
@@ -129,17 +147,35 @@ footer.docs-footer p{margin:0!important;color:#9AA7B2!important}</style><link re
 <ul>
 <li class="ok">[x] Mainnet + testnet live</li><li class="ok">[x] Block explorer</li><li class="ok">[x] Web wallet</li><li class="ok">[x] Faucet</li>
 <li class="ok">[x] Public whitepaper (this document)</li><li class="ok">[x] Landing page (<a href="https://rewecoin.com/">rewecoin.com</a>)</li><li class="ok">[x] Community channels (Telegram, Discord, X)</li>
-<li class="ok">[x] Mining pool: public at pool.rewecoin.com (PPLNS, vardiff on port 3092)</li>
+<li class="ok">[x] Mining pool: pool.rewecoin.com (PPLNS, vardiff on port 3092)</li>
+<li class="ok">[x] Bridge to Monad and wRWC launch</li>
+<li class="ok">[x] DEX pools wRWC/USDC and wRWC/USDT0</li>
+<li class="ok">[x] Vault NFTs</li>
+<li class="ok">[x] WRWC.* ecosystem tokens on Monad</li>
+<li class="ok">[x] Rip Packs</li>
+<li class="ok">[x] Smart contract source code verified (MonadScan, MonadVision)</li>
+<li class="ok">[x] Live proof of reserve for wRWC</li>
+</ul>
+<p class="dim">Next:</p>
+<ul>
 <li>[ ] Pool TLS (stratum over SSL)</li>
-<li>[ ] End-to-end public test: faucet → wallet A → send → wallet B → explorer</li>
-<li>[ ] Defined utility layer (Section 4)</li>
-<li>[ ] Exchange listing / swap (may carry money-transmission / KYC-AML implications; get legal review first)</li>
-<li>[ ] Mobile app or PWA</li></ul>
+<li>[ ] Deeper DEX liquidity</li>
+<li>[ ] Fiat on-ramp for wRWC</li>
+<li>[ ] External smart contract audit</li>
+<li>[ ] Mobile app or PWA</li>
+<li>[ ] Exchange listings</li></ul>
 
 </section><section class="card"><h2><span class="num">7.</span> Risks and disclaimers</h2>
 <ul><li>Early-stage network: difficulty is at its floor and peer count is minimal. Block timing and security assumptions will shift as the network grows.</li>
 <li>Emission projections assume the target block time; real timelines vary with hashrate.</li>
-<li>Not financial advice. RWC should not be treated as an investment absent a documented utility case.</li></ul>
+<li>The bridge is custodial: wRWC holders rely on the operator to keep the locked RWC and process redemptions.</li>
+<li>The Monad smart contracts are public and verified but have not yet been externally audited.</li>
+<li>Prizes from Rip Packs and rewards from vaults have no guaranteed value.</li>
+<li>Not financial advice. Read the <a href="https://wallet.rewecoin.com/terms.html">terms of service</a>.</li></ul>
 
-</section><footer class="docs-footer"><nav><a href="https://rewecoin.com/">Website</a><a href="https://github.com/00impera">GitHub</a><a href="https://discord.gg/ne6fQyEcFZ">Discord</a><a href="https://t.me/ReweCoin_bot">Telegram</a><a href="https://x.com/ionelxxx1">X</a></nav><p>&copy; 2026 ReweCoin</p></footer>
+</section><section class="card"><h2><span class="num">8.</span> Team and operator</h2>
+<p><b>Ionel Bodnar</b>, Founder, ReweCoin Project (<a href="https://www.linkedin.com/in/rewecoin">LinkedIn</a>).</p>
+<p>The ReweCoin services (wallet, explorer, mining pool, bridge and Monad applications) are operated by <b>DREAMAI</b> (France). Contact: <a href="mailto:contact@rewecoin.com">contact@rewecoin.com</a>. <a href="https://wallet.rewecoin.com/terms.html">Terms of service</a> · <a href="https://wallet.rewecoin.com/privacy.html">Privacy policy</a>.</p>
+
+</section><footer class="docs-footer"><nav><a href="https://rewecoin.com/">Website</a><a href="https://github.com/00impera">GitHub</a><a href="https://discord.gg/ne6fQyEcFZ">Discord</a><a href="https://t.me/ReweCoin_bot">Telegram</a><a href="https://x.com/ionelxxx1">X</a><a href="https://medium.com/@ReweCoin">Medium</a><a href="https://wallet.rewecoin.com/wrwc.html">wRWC</a><a href="mailto:contact@rewecoin.com">contact@rewecoin.com</a></nav><p>&copy; 2026 ReweCoin · DREAMAI</p></footer>
 </body></html>
