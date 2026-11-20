@@ -6,7 +6,7 @@ A small client for the ReweCoin public, read-only REST API ([API reference](http
 
 - Works in Node.js 18+ (global `fetch`) and in browsers.
 - Default API: `https://api.rewecoin.com` (mainnet).
-- Download: [`rewecoin.js`](https://raw.githubusercontent.com/00impera/rewecoin-docs/main/sdk/rewecoin.js) (source on [GitHub](https://github.com/00impera/rewecoin-docs/tree/main/sdk)). There is no npm package yet: copy the file into your project.
+- Download: [`rewecoin.js`](https://raw.githubusercontent.com/00impera/rewecoin-docs/master/sdk/rewecoin.js) (source on [GitHub](https://github.com/00impera/rewecoin-docs/tree/master/sdk)). There is no npm package yet: copy the file into your project.
 
 ## Usage
 
